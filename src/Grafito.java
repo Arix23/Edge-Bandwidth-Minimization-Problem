@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Grafito {
 
@@ -9,6 +9,12 @@ public class Grafito {
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
 		
 		Scanner sc = new Scanner(System.in);
+		int numVertex = sc.nextInt();
+		HashMap Graph = new HashMap();
+
+		for(int i = 1; i <= numVertex; i++){
+			Graph.put(i,new Vertex(i));
+		}
 
 		sc.close();
 
