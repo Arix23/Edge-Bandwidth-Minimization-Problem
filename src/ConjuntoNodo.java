@@ -17,4 +17,12 @@ public class ConjuntoNodo {
 	  public int hashCode() {
 	    return (nodo1 << 16) + nodo2;
 	  }
+	  
+	  public int getNodo2() {
+		  return this.nodo2;
+	  }
+	  
+	  public int getNodo1() {
+		  return this.nodo1;
+	  }
 }

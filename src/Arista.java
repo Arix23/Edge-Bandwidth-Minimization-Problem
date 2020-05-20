@@ -12,6 +12,14 @@ public class Arista {
 		
 	}
 	
+	public int GetVertex() {
+		return this.nodos.getNodo2();
+	}
+	
+	public int GetInicial() {
+		return this.nodos.getNodo1();
+	}
+	
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
