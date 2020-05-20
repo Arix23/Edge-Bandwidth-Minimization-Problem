@@ -21,8 +21,8 @@ public class Grafito {
 			//Se recibe el numero de conexiones, y se agregan a las vertices
 			int numConnections = sc.nextInt();
 
-			for(int j = 0; j < numConnections; j++){
-				Graph.get(j+1).addConnection(Graph.get(sc.nextInt()));
+			for(int j = 1; j <= numConnections; j++){
+				Graph.get(j).addConnection(Graph.get(sc.nextInt()));
 			}
 		}
 
