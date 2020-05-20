@@ -22,7 +22,7 @@ public class Grafito {
 			int numConnections = sc.nextInt();
 
 			for(int j = 0; j < numConnections; j++){
-				Graph.get(j).addConnection(Graph.get(sc.nextInt()));
+				Graph.get(j+1).addConnection(Graph.get(sc.nextInt()));
 			}
 		}
 
