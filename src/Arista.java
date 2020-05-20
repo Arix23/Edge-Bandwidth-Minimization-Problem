@@ -6,9 +6,12 @@ public class Arista {
 	private int nodoInicial;
 	private int nodoFinal;
 	
-	public Arista(int valor) {
+	public Arista(int valor, int inicio, int nodoFinal) {
 		this.valor = valor;
+		this.nodoInicial = inicio;
+		this.nodoFinal = nodoFinal;
 		this.aristasIncidentes = new LinkedList<Arista>();	
+		
 	}
 	
 	public void setValor(int valor) {
