@@ -25,11 +25,11 @@ public class Grafito {
 				Graph.get(j).addConnection(Graph.get(sc.nextInt()));
 			}
 		}
-
-		
-
 		sc.close();
-
+		
+		
+		
+		
 	}
 	
 	/*public void randomTag() {
