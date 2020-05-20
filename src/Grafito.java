@@ -32,6 +32,10 @@ public class Grafito {
 
 	}
 	
+	/*public void randomTag() {
+		
+	}*/
+	
 	public void EBMPAlgorithm() {
 		
 	}
