@@ -3,13 +3,11 @@ import java.util.LinkedList;
 public class Arista {
 	private int valor;
 	private LinkedList<Arista> aristasIncidentes;
-	private int nodoInicial;
-	private int nodoFinal;
+	private ConjuntoNodo nodos;
 	
 	public Arista(int valor, int inicio, int nodoFinal) {
 		this.valor = valor;
-		this.nodoInicial = inicio;
-		this.nodoFinal = nodoFinal;
+		this.nodos = new ConjuntoNodo(inicio, nodoFinal);
 		this.aristasIncidentes = new LinkedList<Arista>();	
 		
 	}

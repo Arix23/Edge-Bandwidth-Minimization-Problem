@@ -11,7 +11,7 @@ public class Grafito {
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
-		LinkedList<Arista> aristasProblema = new LinkedList<Arista>();
+		HashMap<ConjuntoNodo,Arista> aristasProblema = new HashMap<ConjuntoNodo, Arista>();
 
 		//Se agregan las vertices al grafo y se les asigna una llave
 		for(int i = 1; i <= numVertex; i++){
@@ -25,10 +25,16 @@ public class Grafito {
 			for(int j = 1; j <= numConnections; j++){
 				int conVertex = sc.nextInt();
 				Graph.get(j).addConnection(Graph.get(conVertex));
-				aristasProblema.add(new Arista(0,j,conVertex));
+				if(aristasProblema.get(new ConjuntoNodo(j,conVertex))!=null || aristasProblema.get(new ConjuntoNodo(conVertex,j))!=null) {
+					aristasProblema.put(new ConjuntoNodo(j,conVertex), new Arista(0,j,conVertex));
+				} else {
+					
+				}
 			}
 		}
 		sc.close();
+		
+		
 		
 		
 		
