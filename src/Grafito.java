@@ -1,8 +1,10 @@
-
 public class Grafito {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//PRIMERO CREAR VERTICES
+		//DESPUES METER LAS CONEXIONES
+		//LUEGO CREAR HASHTABLE
+		
 
 	}
 
