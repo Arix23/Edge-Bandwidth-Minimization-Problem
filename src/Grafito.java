@@ -47,17 +47,10 @@ public class Grafito {
 		    finalVertex = Graph.get(value.GetInicial());
 		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
 		    	if(finalVertex.getConnections().get(i).getTag()!=value.GetVertex()) {
-		    		System.out.println("LA ARISTA :" + value.GetInicial() + value.GetVertex());
-		    		System.out.println(finalVertex.getConnections().get(i).getTag());
-		    		System.out.println(value.GetInicial());
-		    		if(aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())) != null || aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial()))!=null) {
-		    			if((aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())) != null)) {
-		    				System.out.println("HOLA");
-		    				value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())));
-		    			} else {
-		    				System.out.println("HOLA");
-		    				value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(value.GetInicial(),finalVertex.getConnections().get(i).getTag())));
-		    			}
+		    		if((aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())) != null)) {
+		    			value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())));
+		    		} else {
+		    			value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(value.GetInicial(),finalVertex.getConnections().get(i).getTag())));
 		    		}
 		    	}
 		    }
