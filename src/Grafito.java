@@ -26,8 +26,6 @@ public class Grafito {
 				int conVertex = sc.nextInt();
 				Graph.get(i).addConnection(Graph.get(conVertex));
 				if(aristasProblema.get(new ConjuntoNodo(i,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,i))==null) {
-					System.out.println("INICIO" + i);
-					System.out.println("FINAL" + conVertex);
 					aristasProblema.put(new ConjuntoNodo(i,conVertex), new Arista(0,i,conVertex));
 				} else {
 
