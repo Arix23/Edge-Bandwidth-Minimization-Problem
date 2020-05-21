@@ -43,6 +43,23 @@ public class Grafito {
 		    		value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(value.GetVertex(),finalVertex.getConnections().get(i).getTag())));
 		    	}
 		    }
+		    
+		    finalVertex = Graph.get(value.GetInicial());
+		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
+		    	if(finalVertex.getConnections().get(i).getTag()!=value.GetVertex()) {
+		    		System.out.println("LA ARISTA :" + value.GetInicial() + value.GetVertex());
+		    		System.out.println(finalVertex.getConnections().get(i).getTag());
+		    		System.out.println(value.GetInicial());
+		    		if(aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())) != null || aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial()))!=null)
+		    			if((aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())) != null)) {
+		    				System.out.println("HOLA");
+		    				value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetInicial())));
+		    			} else {
+		    				System.out.println("HOLA");
+		    				value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(value.GetInicial(),finalVertex.getConnections().get(i).getTag())));
+		    			}
+		    	}
+		    }
 		}
 
 		/*
@@ -89,6 +106,10 @@ public class Grafito {
 			}
 		}
 		
+		//LinkedList<Integer> = new LinkedList<Integer>();
+		
+		
+		
 		System.out.println("La solución encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
 		System.out.println("Se le asigna los siguientes valores a cada arista: ");
 		int count = 0;
@@ -96,6 +117,7 @@ public class Grafito {
 			System.out.println("Arista " + value.GetInicial() + "-" + value.GetVertex() + " Con valor: " + solucionBuena.getSolucion().get(count));
 			count++;
 		}
+		
 	}
 
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
