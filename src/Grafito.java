@@ -64,6 +64,12 @@ public class Grafito {
 				temp = value.getSolucion();
 				//INTERCAMBIAR UN VALOR RANDOM
 				value.setSolucion(temp);
+				int count = 0;
+				for (Arista arista : aristasProblema.values()) {
+					arista.setValor(temp.get(count));
+					count++;
+				}
+				segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
 			}
 		}
 
