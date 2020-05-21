@@ -5,6 +5,10 @@ public class Solucion {
 	private int bandaAncha;
 	public static int minBandwidth;
 	
+	public Solucion() {
+		
+	}
+	
 	public Solucion(LinkedList<Integer> solucion, int bandaAncha) {
 		this.solucion = solucion;
 		this.bandaAncha = bandaAncha;
