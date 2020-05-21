@@ -48,8 +48,8 @@ public class Grafito {
 		/*
 		 3
 		 2 3 2
-		 1 3
-		 1 1
+		 2 1 3
+		 2 1 2
 		 */
 
 		//Valor random de vertices
@@ -69,7 +69,7 @@ public class Grafito {
 		}
 		return intList;
 	}
-	
+
 	public static int calculateBandwidth(HashMap<ConjuntoNodo, Arista> aristas) {
 		int max = 0;
 		for (Arista value : aristas.values()) {
@@ -81,7 +81,7 @@ public class Grafito {
 			}
 		}
 		return max;
-		
+
 	}
 
 	public void EBMPAlgorithm() {
