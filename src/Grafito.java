@@ -24,9 +24,11 @@ public class Grafito {
 
 			for(int j = 1; j <= numConnections; j++){
 				int conVertex = sc.nextInt();
-				Graph.get(j).addConnection(Graph.get(conVertex));
-				if(aristasProblema.get(new ConjuntoNodo(j,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,j))==null) {
-					aristasProblema.put(new ConjuntoNodo(j,conVertex), new Arista(0,j,conVertex));
+				Graph.get(i).addConnection(Graph.get(conVertex));
+				if(aristasProblema.get(new ConjuntoNodo(i,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,i))==null) {
+					System.out.println("INICIO" + i);
+					System.out.println("FINAL" + conVertex);
+					aristasProblema.put(new ConjuntoNodo(i,conVertex), new Arista(0,i,conVertex));
 				} else {
 
 				}
@@ -47,7 +49,7 @@ public class Grafito {
 
 		/*
 		 3
-		 2 3 2
+		 2 2 3	
 		 2 1 3
 		 2 1 2
 		 */
