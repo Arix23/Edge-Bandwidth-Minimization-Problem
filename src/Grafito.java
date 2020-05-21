@@ -91,6 +91,11 @@ public class Grafito {
 		
 		System.out.println("La solución encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
 		System.out.println("Se le asigna los siguientes valores a cada arista: ");
+		int count = 0;
+		for(Arista value : aristasProblema.values()) {
+			System.out.println("Arista " + value.GetInicial() + "-" + value.GetVertex() + " Con valor: " + solucionBuena.getSolucion().get(count));
+			count++;
+		}
 	}
 
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
