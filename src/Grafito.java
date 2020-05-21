@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Grafito {
-	
+
 	public static void main(String[] args) {
 		//PRIMERO CREAR VERTICES
 		//DESPUES METER LAS CONEXIONES
@@ -32,7 +32,7 @@ public class Grafito {
 				}
 			}
 		}
-		
+
 		sc.close();
 
 		//INCIDENCIA
@@ -44,14 +44,14 @@ public class Grafito {
 		    	}
 		    }
 		}
-		
+
 		/*
 		 3
 		 2 3 2
 		 1 3
 		 1 1
 		 */
-		
+
 		LinkedList<Integer> intList = createList(aristasProblema.size());
 		System.out.println(RandomTag(intList).toString());
 		System.out.println(RandomTag(intList).toString());
@@ -63,7 +63,7 @@ public class Grafito {
 		Collections.shuffle(shuffled);
 		return shuffled;
 	}
-	
+
 	public static LinkedList<Integer> createList(int size) {
 		LinkedList<Integer> intList = new LinkedList<Integer>();
 		for(int i = 0; i < size; i ++) {
@@ -71,9 +71,11 @@ public class Grafito {
 		}
 		return intList;
 	}
-	
+
 	public void EBMPAlgorithm() {
 
 	}
+
+
 
 }
