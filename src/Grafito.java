@@ -96,9 +96,11 @@ public class Grafito {
 		int max = 0;
 		for (Arista value : aristas.values()) {
 			for(int i = 0;i<value.getAristasIncidentes().size();i++) {
-				int temp = (Math.abs(value.getValor()-value.getAristasIncidentes().get(i).getValor()));
-				if(temp>max) {
-					max = temp;
+				if(value.getAristasIncidentes().get(i)!=null) {
+					int temp = (Math.abs(value.getValor()-value.getAristasIncidentes().get(i).getValor()));
+					if(temp>max) {
+						max = temp;
+					}
 				}
 			}
 		}
