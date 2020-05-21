@@ -19,7 +19,7 @@ El algoritmo recibe el siguiente formato de entrada, en formatos .txt, desde con
 	-Una serie de listas que definen las conexiones de cada nodo, con el siguiente formato:
 		-Número de conexiones del nodo.
 		-Nodos a los que está conectado*
-		*(Aunque ya este espcificada una conexión en un nodo anterior, se deben ingresar TODAS las conexiones.)
+		*(Aunque ya este espcíficada una conexión en un nodo anterior, se deben ingresar TODAS las conexiones.)
 
 Un ejemplo de entrada válida sería el siguiente:
 
@@ -28,12 +28,12 @@ Un ejemplo de entrada válida sería el siguiente:
 2 1 3
 2 1 2
 
-Donde se muestra un grafo de tres vertices, en el cual todos los nodos están interconectados entre sí.
+Donde se muestra un grafo de tres vértices, en el cual todos los nodos están interconectados entre sí.
 
-Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carperta que el algoritmo
+Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carpeta que el algoritmo
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
-Una vez compilado solo se debe escribir "java Grafito < testcase.txt" en consola para ejecutarlo. 
+Una vez compilado, solo se debe escribir "java Grafito < testcase.txt" en consola para ejecutarlo. 
 
 
 
