@@ -55,15 +55,8 @@ public class Grafito {
 
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
-		LinkedList<Integer>[] poblacionInicial = CrearPoblacionInicial(intList);
-		for(int i = 0;i<poblacionInicial.length;i++) {
-			int count = 0;
-			for (Arista value : aristasProblema.values()) {
-				value.setValor(poblacionInicial[i].get(count));
-				count++;
-			}
-			System.out.println(calculateBandwidth(aristasProblema));
-		}
+		//SE CREA POBLACION INICIAL
+		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		
 		
 		LinkedList<Integer> LA = RandomTag(intList);
@@ -72,11 +65,19 @@ public class Grafito {
 		Combinar(LA, LB);
 	}
 	
-	public static LinkedList<Integer>[] CrearPoblacionInicial(LinkedList<Integer> inicial){
-		LinkedList<Integer>[] poblacion = new LinkedList[3];
+	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
+		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		for(int i = 0;i<3;i++) {
 			LinkedList<Integer> temp = RandomTag(inicial);
-			poblacion[i] = RandomTag(temp);
+			int count = 0;
+			for (Arista value : aristas.values()) {
+				value.setValor(temp.get(count));
+				count++;
+			}
+			System.out.println(calculateBandwidth(aristas));
+			if(!poblacion.containsKey(temp.toString())) {
+				poblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristas)));
+			}
 		}
 		return poblacion;
 	}
