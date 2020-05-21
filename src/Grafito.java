@@ -46,13 +46,8 @@ public class Grafito {
 		    	}
 		    }
 		}
-		
-		
-		
-		
-		
-		
 	}
+	
 	
 	/*public void randomTag() {
 		
@@ -61,5 +56,7 @@ public class Grafito {
 	public void EBMPAlgorithm() {
 		
 	}
+	
+	
 
 }
