@@ -63,6 +63,7 @@ public class Grafito {
 			if(value.getBandwidth()>value.minBandwidth) {
 				temp = value.getSolucion();
 				//INTERCAMBIAR UN VALOR RANDOM
+				intercambiar(temp);
 				value.setSolucion(temp);
 				int count = 0;
 				for (Arista arista : aristasProblema.values()) {
@@ -72,7 +73,7 @@ public class Grafito {
 				segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
 			}
 		}
-
+		
 		//SELECCIONAR LA MEJOR SOLUCION DE LAS DOS POBLACIONES
 	}
 
@@ -129,6 +130,22 @@ public class Grafito {
 		}
 		return max;
 
+	}
+	
+	public static void intercambiar(LinkedList<Integer> temp) {
+		//System.out.println(temp.toString());
+		Random rnd = new Random();
+		int random1 = rnd.nextInt(temp.size());
+		int random2 = rnd.nextInt(temp.size());
+		
+		while(random1 == random2) {
+			random2 = rnd.nextInt(temp.size());
+		}
+		
+		int ran2val = temp.get(random2);
+		temp.set(random2, temp.get(random1));
+		temp.set(random1, ran2val);
+		//System.out.println(temp.toString());
 	}
 
 	public void EBMPAlgorithm() {
