@@ -105,7 +105,7 @@ public class Grafito {
 			}
 			if(!poblacion.containsKey(temp.toString())) {
 				int bandwidth = calculateBandwidth(aristas);
-				if(bandwidth<min) {
+				if(bandwidth>min) {
 					poblacion.put(temp.toString(), new Solucion(temp,bandwidth,bandwidth));
 				} else {
 					poblacion.put(temp.toString(), new Solucion(temp,bandwidth));
@@ -138,6 +138,7 @@ public class Grafito {
 			for(int i = 0;i<value.getAristasIncidentes().size();i++) {
 				if(value.getAristasIncidentes().get(i)!=null) {
 					int temp = (Math.abs(value.getValor()-value.getAristasIncidentes().get(i).getValor()));
+					System.out.println("temp resta: " + temp + " Aristas: " + value.getValor() + " y " + value.getAristasIncidentes().get(i).getValor());
 					if(temp>max) {
 						max = temp;
 					}
