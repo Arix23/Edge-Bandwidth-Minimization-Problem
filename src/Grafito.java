@@ -57,11 +57,24 @@ public class Grafito {
 		LinkedList<Integer> intList = createList(aristasProblema.size());
 		//SE CREA POBLACION INICIAL
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
+		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
+		for (Solucion value : poblacionInicial.values()) {
+			LinkedList<Integer> temp = new LinkedList<Integer>();
+			if(value.getBandwidth()>value.minBandwidth) {
+				temp = value.getSolucion();
+				//INTERCAMBIAR UN VALOR RANDOM
+				value.setSolucion(temp);
+			}
+		}
+		
+		//SELECCIONAR LA MEJOR SOLUCION DE LAS DOS POBLACIONES
+		
 		
 	}
 	
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
+		int min = 10000000;
 		for(int i = 0;i<3;i++) {
 			LinkedList<Integer> temp = RandomTag(inicial);
 			int count = 0;
@@ -69,10 +82,16 @@ public class Grafito {
 				value.setValor(temp.get(count));
 				count++;
 			}
-			System.out.println(calculateBandwidth(aristas));
 			if(!poblacion.containsKey(temp.toString())) {
-				poblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristas)));
+				int bandwidth = calculateBandwidth(aristas);
+				if(bandwidth<min) {
+					poblacion.put(temp.toString(), new Solucion(temp,bandwidth,bandwidth));
+				} else {
+					poblacion.put(temp.toString(), new Solucion(temp,bandwidth));
+				}
+				
 			}
+
 		}
 		return poblacion;
 	}
