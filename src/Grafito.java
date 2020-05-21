@@ -36,7 +36,7 @@ public class Grafito {
 		sc.close();
 
 		//INCIDENCIA
-		/*for (Arista value : aristasProblema.values()) {
+		for (Arista value : aristasProblema.values()) {
 			Vertex finalVertex = Graph.get(value.GetVertex());
 		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
 		    	if(finalVertex.getConnections().get(i).getTag()!=value.GetInicial()) {
