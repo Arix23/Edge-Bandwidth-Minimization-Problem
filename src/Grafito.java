@@ -7,9 +7,9 @@ public class Grafito {
 		//DESPUES METER LAS CONEXIONES
 		//LUEGO CREAR HASHTABLE DE VERTICES
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
-		
-		
-		
+
+
+
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
@@ -30,13 +30,13 @@ public class Grafito {
 				if(aristasProblema.get(new ConjuntoNodo(j,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,j))==null) {
 					aristasProblema.put(new ConjuntoNodo(j,conVertex), new Arista(0,j,conVertex));
 				} else {
-					
+
 				}
 			}
 		}
 		sc.close();
-		
-		
+
+
 		//INCIDENCIA
 		for (Arista value : aristasProblema.values()) {
 			Vertex finalVertex = Graph.get(value.GetVertex());
@@ -46,17 +46,46 @@ public class Grafito {
 		    	}
 		    }
 		}
+
+
+
+
+
+
 	}
-	
-	
-	/*public void randomTag() {
-		
-	}*/
-	
+
+	public static void randomTag(HashMap<Integer, Vertex> Graph) {
+		int [] randomTag = new int[Graph.size()];
+		boolean [] used = new boolean[Graph.size()];
+
+		for(int i = 0; i < randomTag.length; i++ ) {
+			Random rnd = new Random();
+			int random = rnd.nextInt(randomTag.length);
+			 if(!used[random]) {
+				 System.out.println( "ra: " + random);
+				 randomTag[i] = random;
+				 used[random] = true;
+			 }else {
+				 System.out.println("rau: " + random + " - ao  " + (random + 1 % randomTag.length));
+				/*while(used[random]) {
+					 random %= randomTag.length;
+				 }
+
+				 randomTag[random] = random;
+				 used[random] = true;*/
+			 }
+		}
+
+		System.out.println();
+		for(int i = 0; i < randomTag.length; i++ ) {
+			System.out.print(randomTag[i] + " ");
+		}
+	}
+
 	public void EBMPAlgorithm() {
-		
+
 	}
-	
-	
+
+
 
 }
