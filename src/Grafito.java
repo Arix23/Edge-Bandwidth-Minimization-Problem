@@ -117,7 +117,7 @@ public class Grafito {
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
-		for(int i = 0;i<3;i++) {
+		for(int i = 0;i<100;i++) {
 			LinkedList<Integer> temp = RandomTag(inicial);
 			int count = 0;
 			for (Arista value : aristas.values()) {
