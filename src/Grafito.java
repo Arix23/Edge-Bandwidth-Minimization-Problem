@@ -74,7 +74,23 @@ public class Grafito {
 			}
 		}
 		
-		//SELECCIONAR LA MEJOR SOLUCION DE LAS DOS POBLACIONES
+		int minimo = 1000000;
+		Solucion solucionBuena = new Solucion();
+		
+		for (Solucion value : poblacionInicial.values()) {
+			if(value.getBandwidth()<minimo) {
+				solucionBuena=value;
+			}
+		}
+		
+		for (Solucion value : segundaPoblacion.values()) {
+			if(value.getBandwidth()<minimo) {
+				solucionBuena=value;
+			}
+		}
+		
+		System.out.println("La solución encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
+		System.out.println("Se le asigna los siguientes valores a cada arista: ");
 	}
 
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
