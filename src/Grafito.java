@@ -54,6 +54,28 @@ public class Grafito {
 
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
+		System.out.println(RandomTag(intList).toString());
+		int count = 0;
+		for (Arista value : aristasProblema.values()) {
+			value.setValor(intList.get(count));
+			count++;
+		}
+		System.out.println(calculateBandwidth(aristasProblema));
+		count = 0;
+		System.out.println(RandomTag(intList).toString());
+		for (Arista value : aristasProblema.values()) {
+			value.setValor(intList.get(count));
+			count++;
+		}
+		System.out.println(calculateBandwidth(aristasProblema));
+		count = 0;
+		System.out.println(RandomTag(intList).toString());
+		for (Arista value : aristasProblema.values()) {
+			value.setValor(intList.get(count));
+			count++;
+		}
+		System.out.println(calculateBandwidth(aristasProblema));
+	}
 	}
 
 	public static LinkedList<Integer> RandomTag(LinkedList<Integer> intList) {
