@@ -55,27 +55,25 @@ public class Grafito {
 
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
-		intList = RandomTag(intList);
-		int count = 0;
-		for (Arista value : aristasProblema.values()) {
-			value.setValor(intList.get(count));
-			count++;
+		LinkedList<Integer>[] poblacionInicial = CrearPoblacionInicial(intList);
+		for(int i = 0;i<poblacionInicial.length;i++) {
+			int count = 0;
+			for (Arista value : aristasProblema.values()) {
+				value.setValor(poblacionInicial[i].get(count));
+				count++;
+			}
+			System.out.println(calculateBandwidth(aristasProblema));
 		}
-		System.out.println(calculateBandwidth(aristasProblema));
-		count = 0;
-		intList = RandomTag(intList);
-		for (Arista value : aristasProblema.values()) {
-			value.setValor(intList.get(count));
-			count++;
+		
+	}
+	
+	public static LinkedList<Integer>[] CrearPoblacionInicial(LinkedList<Integer> inicial){
+		LinkedList<Integer>[] poblacion = new LinkedList[3];
+		for(int i = 0;i<3;i++) {
+			LinkedList<Integer> temp = RandomTag(inicial);
+			poblacion[i] = RandomTag(temp);
 		}
-		System.out.println(calculateBandwidth(aristasProblema));
-		count = 0;
-		intList = RandomTag(intList);
-		for (Arista value : aristasProblema.values()) {
-			value.setValor(intList.get(count));
-			count++;
-		}
-		System.out.println(calculateBandwidth(aristasProblema));
+		return poblacion;
 	}
 
 	public static LinkedList<Integer> RandomTag(LinkedList<Integer> intList) {
@@ -93,6 +91,7 @@ public class Grafito {
 	}
 
 	public static int calculateBandwidth(HashMap<ConjuntoNodo, Arista> aristas) {
+		//SE PUEDE OPTIMIZAR
 		int max = 0;
 		for (Arista value : aristas.values()) {
 			for(int i = 0;i<value.getAristasIncidentes().size();i++) {
