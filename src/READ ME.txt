@@ -1,0 +1,23 @@
+Hecho por:
+Ari Valenzuela
+Nataly Hernández
+Héctor Álvarez
+
+Esto es una implementación de un algortimo de solución al Problema de Bandwith Mínimo.
+
+El algoritmo recibe el siguiente formato de entrada, en formatos .txt, desde consola:
+	-Número de vértices / nodos.
+	-Una serie de listas que definen las conexiones de cada nodo, con el siguiente formato:
+		-Número de conexiones del nodo.
+		-Nodos a los que está conectado*
+		*(Aunque ya este espcificada una conexión en un nodo anterior, se deben ingresar TODAS las conexiones.)
+
+Un ejemplo de entrada válida sería el siguiente:
+
+3
+2 2 3
+2 1 3
+2 1 2
+
+Donde se muestra un grafo de tres vertices, en el cual todos los nodos están interconectados entre sí.
+
