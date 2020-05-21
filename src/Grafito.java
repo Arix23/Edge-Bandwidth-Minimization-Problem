@@ -118,12 +118,9 @@ public class Grafito {
 	}
 
 	public static LinkedList<Integer> Combinar(LinkedList<Integer> listaA, LinkedList<Integer> listaB){
-		int size = listaA.size();
-		for(int i = 0; i < size; i++) {
-			listaA.add(listaB.get(i));			
+		if(listaA.getLast() == listaB.getLast()) {
+			
 		}
-		Collections.shuffle(listaA);
-		System.out.println(listaA.toString());
 		return listaA;
 	}
 
