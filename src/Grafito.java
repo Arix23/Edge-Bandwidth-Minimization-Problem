@@ -47,7 +47,7 @@ public class Grafito {
 
 		/*
 		 4
-		 1 2	
+		 1 2
 		 2 1 3
 		 2 2 4
 		 1 3
@@ -66,10 +66,10 @@ public class Grafito {
 				value.setSolucion(temp);
 			}
 		}
-		
+
 		//SELECCIONAR LA MEJOR SOLUCION DE LAS DOS POBLACIONES
 	}
-	
+
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
@@ -87,7 +87,7 @@ public class Grafito {
 				} else {
 					poblacion.put(temp.toString(), new Solucion(temp,bandwidth));
 				}
-				
+
 			}
 
 		}
@@ -106,7 +106,7 @@ public class Grafito {
 			intList.add(i + 1);
 		}
 		return intList;
-	}	
+	}
 
 	public static int calculateBandwidth(HashMap<ConjuntoNodo, Arista> aristas) {
 		//SE PUEDE OPTIMIZAR
