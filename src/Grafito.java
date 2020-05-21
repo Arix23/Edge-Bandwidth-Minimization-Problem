@@ -76,7 +76,6 @@ public class Grafito {
 		}
 		System.out.println(calculateBandwidth(aristasProblema));
 	}
-	}
 
 	public static LinkedList<Integer> RandomTag(LinkedList<Integer> intList) {
 		LinkedList<Integer> shuffled = (LinkedList<Integer>) intList.clone();
