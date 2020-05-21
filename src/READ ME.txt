@@ -3,7 +3,16 @@ Ari Valenzuela
 Nataly Hernández
 Héctor Álvarez
 
-Esto es una implementación de un algortimo de solución al Problema de Bandwith Mínimo.
+Esto es una implementación de un algortimo de solución al Problema de Bandwith Mínimo, 
+que consiste en las siguientes clases:
+
+-Grafito, clase principal donde se soluciona el problema.
+-Vertex, clase que define al objeto tipo vertex que representa los nodos del grafo.
+-Arista, clase que define al objeto arista que representa las conexiones del grafo.
+-ConjuntoNodo, clase usada para definir conjuntos de nodos que están unidos por una arista.
+-Solución, clase usada para representar las soluciones n propuestas para resolver el algoritmo.
+
+Grafito es nuestra clase principal
 
 El algoritmo recibe el siguiente formato de entrada, en formatos .txt, desde consola:
 	-Número de vértices / nodos.
@@ -20,4 +29,11 @@ Un ejemplo de entrada válida sería el siguiente:
 2 1 2
 
 Donde se muestra un grafo de tres vertices, en el cual todos los nodos están interconectados entre sí.
+
+Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carperta que el algoritmo
+y que se este se haya compilado previamente, utilizando "javac Grafito.java".
+
+Una vez compilado solo se debe escribir "java Grafito < testcase.txt" en consola para ejecutarlo. 
+
+
 
