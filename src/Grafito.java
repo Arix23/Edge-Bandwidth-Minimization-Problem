@@ -47,7 +47,7 @@ public class Grafito {
 
 		/*
 		 4
-		 1 2	
+		 1 2
 		 2 1 3
 		 2 2 4
 		 1 3
@@ -64,19 +64,18 @@ public class Grafito {
 				temp = value.getSolucion();
 				//INTERCAMBIAR UN VALOR RANDOM
 				value.setSolucion(temp);
+				int count = 0;
+				for (Arista arista : aristasProblema.values()) {
+					arista.setValor(temp.get(count));
+					count++;
+				}
+				segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
 			}
 		}
-		
-		//SELECCIONAR LA MEJOR SOLUCION DE LAS DOS POBLACIONES
-		
-		
-		
-		LinkedList<Integer> LA = RandomTag(intList);
-		LinkedList<Integer> LB = RandomTag(intList);
 
-		Combinar(LA, LB);
+		//SELECCIONAR LA MEJOR SOLUCION DE LAS DOS POBLACIONES
 	}
-	
+
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
@@ -94,7 +93,7 @@ public class Grafito {
 				} else {
 					poblacion.put(temp.toString(), new Solucion(temp,bandwidth));
 				}
-				
+
 			}
 
 		}
@@ -113,7 +112,7 @@ public class Grafito {
 			intList.add(i + 1);
 		}
 		return intList;
-	}	
+	}
 
 	public static int calculateBandwidth(HashMap<ConjuntoNodo, Arista> aristas) {
 		//SE PUEDE OPTIMIZAR
@@ -134,16 +133,6 @@ public class Grafito {
 
 	public void EBMPAlgorithm() {
 
-	}
-
-	public static LinkedList<Integer> Combinar(LinkedList<Integer> listaA, LinkedList<Integer> listaB){
-		int size = listaA.size();
-		for(int i = 0; i < size; i++) {
-			listaA.add(listaB.get(i));			
-		}
-		Collections.shuffle(listaA);
-		System.out.println(listaA.toString());
-		return listaA;
 	}
 
 }
