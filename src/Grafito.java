@@ -65,6 +65,11 @@ public class Grafito {
 			System.out.println(calculateBandwidth(aristasProblema));
 		}
 		
+		
+		LinkedList<Integer> LA = RandomTag(intList);
+		LinkedList<Integer> LB = RandomTag(intList);
+
+		Combinar(LA, LB);
 	}
 	
 	public static LinkedList<Integer>[] CrearPoblacionInicial(LinkedList<Integer> inicial){
@@ -88,7 +93,7 @@ public class Grafito {
 			intList.add(i + 1);
 		}
 		return intList;
-	}
+	}	
 
 	public static int calculateBandwidth(HashMap<ConjuntoNodo, Arista> aristas) {
 		//SE PUEDE OPTIMIZAR
@@ -111,6 +116,14 @@ public class Grafito {
 
 	}
 
-
+	public static LinkedList<Integer> Combinar(LinkedList<Integer> listaA, LinkedList<Integer> listaB){
+		int size = listaA.size();
+		for(int i = 0; i < size; i++) {
+			listaA.add(listaB.get(i));			
+		}
+		Collections.shuffle(listaA);
+		System.out.println(listaA.toString());
+		return listaA;
+	}
 
 }
