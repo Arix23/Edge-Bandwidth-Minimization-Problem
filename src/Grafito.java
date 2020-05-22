@@ -99,7 +99,7 @@ public class Grafito {
 			
 			int min = poblacionInicial.get(1).getBandwidth();
 
-			for(int i = 1; i =< terceraPoblacion.size(); i++){
+			for(int i = 1; i <= terceraPoblacion.size(); i++){
 				if(poblacionInicial.get(i).getBandwidth() <= min ){
 					min = poblacionInicial.get(i).getBandwidth();
 				} 
