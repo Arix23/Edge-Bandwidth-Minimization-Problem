@@ -91,6 +91,7 @@ public class Grafito {
 			}	
 
 			iter++;
+			x--;
 		}
 		
 		int minimo = 1000000;
