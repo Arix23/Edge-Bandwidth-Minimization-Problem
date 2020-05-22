@@ -66,23 +66,31 @@ public class Grafito {
 
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
+
 		//SE CREA POBLACION INICIAL
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
-		for (Solucion value : poblacionInicial.values()) {
-			LinkedList<Integer> temp = new LinkedList<Integer>();
-			if(value.getBandwidth()>value.minBandwidth) {
-				temp = value.getSolucion();
-				//INTERCAMBIAR UN VALOR RANDOM
-				intercambiar(temp);
-				value.setSolucion(temp);
-				int count = 0;
-				for (Arista arista : aristasProblema.values()) {
-					arista.setValor(temp.get(count));
-					count++;
+
+		int iter = 0;
+		int x = 5; //Variable futura de Ari
+		while (iter == 10 || x == 0) {
+			for (Solucion value : poblacionInicial.values()) {
+				LinkedList<Integer> temp = new LinkedList<Integer>();
+				if(value.getBandwidth()>value.minBandwidth) {
+					temp = value.getSolucion();
+					//INTERCAMBIAR UN VALOR RANDOM
+					intercambiar(temp);
+					value.setSolucion(temp);
+					int count = 0;
+					for (Arista arista : aristasProblema.values()) {
+						arista.setValor(temp.get(count));
+						count++;
+					}
+					segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
 				}
-				segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
-			}
+			}	
+
+			iter++;
 		}
 		
 		int minimo = 1000000;
