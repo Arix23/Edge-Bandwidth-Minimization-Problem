@@ -128,7 +128,7 @@ public class Grafito {
 		
 		
 		
-		System.out.println("La soluci�n encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
+		System.out.println("La solucion encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
 		System.out.println("Se le asigna los siguientes valores a cada arista: ");
 		int count = 0;
 		for(Arista value : aristasProblema.values()) {
