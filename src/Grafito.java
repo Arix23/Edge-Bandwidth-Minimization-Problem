@@ -73,7 +73,7 @@ public class Grafito {
 
 		int iter = 0;
 		int x = 5; //Variable futura de Ari
-		while (iter == 10 || x == 0) {
+		while (iter < 10 || x > 0) {
 			for (Solucion value : poblacionInicial.values()) {
 				LinkedList<Integer> temp = new LinkedList<Integer>();
 				if(value.getBandwidth()>value.minBandwidth) {
