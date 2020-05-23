@@ -111,11 +111,11 @@ public class Grafito {
 				}
 			}
 			
-			poblacionInicial.clear();
-
 			for(int i = 1; i <= terceraPoblacion.size(); i++){
 				minimoArray[i-1] = poblacionInicial.get(i).getBandwidth();
 			}
+
+			poblacionInicial.clear();
 
 			Arrays.sort(minimoArray, Collections.reverseOrder());
 
