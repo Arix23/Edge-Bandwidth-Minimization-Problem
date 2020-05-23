@@ -9,7 +9,7 @@ public class Grafito {
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
 
 
-		//C�DIGO PARA LA ENTRADA
+		//CODIGO PARA LA ENTRADA
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
@@ -82,20 +82,21 @@ public class Grafito {
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
 
 		int iter = 0;
-		int x = 10; //Variable futura de Ari
+		int x = 5; //Variable futura de Ari
 
 
 		//CICLO DONDE SE REALIZAN MUTACIONES DE LAS POBLACIONES Y SE ESCOGE LAS MEJORES
 		//ALGORITMO PRINCIPAL METAHEURISTICO
-		while (iter < 10 || x > 0) {
+		LinkedList<Solucion> listaSoluciones = new LinkedList<Solucion>();
+		while (iter < 5 || x > 0) {
 			//optimizable usando un for que una ambas
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
-			terceraPoblacion.putAll(poblacionInicial);
-			terceraPoblacion.putAll(segundaPoblacion);
 
-			Integer[] minimoArray = new Integer[terceraPoblacion.size()];
-
+			listaSoluciones = new LinkedList<Solucion>();
+			
+			
 			for (Solucion value : poblacionInicial.values()) {
+				listaSoluciones.add(value);
 				LinkedList<Integer> temp = new LinkedList<Integer>();
 				if(value.getBandwidth()>value.minBandwidth) {
 					temp = value.getSolucion();
@@ -107,31 +108,18 @@ public class Grafito {
 						arista.setValor(temp.get(count));
 						count++;
 					}
-					segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
-				}
+					Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
+					segundaPoblacion.put(temp.toString(), nuevaSolucion);
+					listaSoluciones.add(nuevaSolucion);					
+				}	
 			}
-
-			for(int i = 1; i <= terceraPoblacion.size(); i++){
-				minimoArray[i-1] = poblacionInicial.get(i).getBandwidth();
-			}
-
-			poblacionInicial.clear();
-
-			Arrays.sort(minimoArray, Collections.reverseOrder());
-
-			int mitad = (int) Math.ceil((terceraPoblacion.size())/2);
-			int i = 1;
-
-			while(mitad>0){
-				if(terceraPoblacion.get(i).getBandwidth() == minimoArray[i-1]){
-					terceraPoblacion.remove(i);
-					mitad --;
-					i++;
-				}
+			int mitad = (int) Math.ceil((listaSoluciones.size())/2);
+			Collections.sort(listaSoluciones);
+			for(int i=0;i<=mitad;i++) {
+				terceraPoblacion.put(listaSoluciones.get(i).getSolucion().toString(), listaSoluciones.get(i));
 			}
 
 			poblacionInicial = terceraPoblacion;
-
 			iter++;
 			x--;
 		}
@@ -166,7 +154,7 @@ public class Grafito {
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
-		for(int i = 0;i<100;i++) {
+		for(int i = 0;i<10;i++) {
 			LinkedList<Integer> temp = RandomTag(inicial);
 			int count = 0;
 			for (Arista value : aristas.values()) {

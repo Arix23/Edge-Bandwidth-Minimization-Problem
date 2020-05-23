@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class Solucion {
+public class Solucion implements Comparable<Solucion> {
 	private LinkedList<Integer> solucion;
 	private int bandaAncha;
 	public static int minBandwidth;
@@ -30,4 +30,16 @@ public class Solucion {
 	public void setSolucion(LinkedList<Integer> solucion) {
 		this.solucion = solucion;
 	}
+	
+	@Override
+    public int compareTo(Solucion o) {
+        int comparedSize = o.bandaAncha;
+        if (this.bandaAncha > comparedSize) {
+            return 1;
+        } else if (this.bandaAncha == comparedSize) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
 }
