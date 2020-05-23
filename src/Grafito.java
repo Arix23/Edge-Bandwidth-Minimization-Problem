@@ -7,7 +7,9 @@ public class Grafito {
 		//DESPUES METER LAS CONEXIONES
 		//LUEGO CREAR HASHTABLE DE VERTICES
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
-
+		
+		
+		//CÓDIGO PARA LA ENTRADA
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
@@ -25,6 +27,8 @@ public class Grafito {
 			for(int j = 1; j <= numConnections; j++){
 				int conVertex = sc.nextInt();
 				Graph.get(i).addConnection(Graph.get(conVertex));
+				
+				//SE CREAN LAS ARISTAS; EVITANDO REPETIDOS
 				if(aristasProblema.get(new ConjuntoNodo(i,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,i))==null) {
 					aristasProblema.put(new ConjuntoNodo(i,conVertex), new Arista(0,i,conVertex));
 				} else {
@@ -34,8 +38,9 @@ public class Grafito {
 		}
 
 		sc.close();
-
-		//INCIDENCIA
+		
+		
+		//INCIDENCIA DE ARISTAS
 		for (Arista value : aristasProblema.values()) {
 			Vertex finalVertex = Graph.get(value.GetVertex());
 		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
@@ -44,6 +49,8 @@ public class Grafito {
 		    	}
 		    }
 		    
+		    
+		    // SE PUEDE OPTIMIZAR
 		    finalVertex = Graph.get(value.GetInicial());
 		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
 		    	if(finalVertex.getConnections().get(i).getTag()!=value.GetVertex()) {
@@ -56,6 +63,9 @@ public class Grafito {
 		    }
 		}
 
+		
+		//TEST CASE
+		
 		/*
 		 4
 		 1 2
@@ -67,7 +77,7 @@ public class Grafito {
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
 
-		//SE CREA POBLACION INICIAL
+		//SE CREA POBLACION INICIAL Y LA POBLACION EN LA QUE SE REALIZA LAS MUTACIONES
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
 		
@@ -78,6 +88,9 @@ public class Grafito {
 		int iter = 0;
 		int x = 10; //Variable futura de Ari
 
+		
+		//CICLO DONDE SE REALIZAN MUTACIONES DE LAS POBLACIONES Y SE ESCOGE LAS MEJORES
+		//ALGORITMO PRINCIPAL METAHEURISTICO
 		while (iter < 10 || x > 0) {
 			//optimizable usando un for que una ambas
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
@@ -124,6 +137,8 @@ public class Grafito {
 			x--;
 		}
 		
+		//SE OBTIENE LA MEJOR SOLUCIÓN POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
+		
 		int minimo = 1000000;
 		Solucion solucionBuena = new Solucion();
 		
@@ -139,9 +154,7 @@ public class Grafito {
 			}
 		}
 		
-		//LinkedList<Integer> = new LinkedList<Integer>();
-		
-		
+		//SE IMPRIME A PANTALLA LA SOLUCION ENCONTRADA CON LAS ARISTAS Y SUS VALORES DADOS
 		
 		System.out.println("La solucion encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
 		System.out.println("Se le asigna los siguientes valores a cada arista: ");
@@ -151,8 +164,12 @@ public class Grafito {
 			count++;
 		}
 		
+		
+		
 	}
 
+	
+	//FUNCION PARA CREAR LA POBLACION INICIAL
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
@@ -177,12 +194,15 @@ public class Grafito {
 		return poblacion;
 	}
 
+	//FUNCION PARA RANDOMIZAR LA LISTA
 	public static LinkedList<Integer> RandomTag(LinkedList<Integer> intList) {
 		LinkedList<Integer> shuffled = (LinkedList<Integer>) intList.clone();
 		Collections.shuffle(shuffled);
 		return shuffled;
 	}
 
+	
+	//FUNCION PARA CREAR LA LISTA SIN RANDOMIZAR
 	public static LinkedList<Integer> createList(int size) {
 		LinkedList<Integer> intList = new LinkedList<Integer>();
 		for(int i = 0; i < size; i ++) {
@@ -191,6 +211,8 @@ public class Grafito {
 		return intList;
 	}
 
+	
+	//FUNCION PARA CALCULAR LA BANDA ANCHA DEL GRAFO
 	public static int calculateBandwidth(HashMap<ConjuntoNodo, Arista> aristas) {
 		//SE PUEDE OPTIMIZAR
 		int max = 0;
@@ -208,6 +230,8 @@ public class Grafito {
 
 	}
 	
+	
+	//FUNCION PARA REALIZAR INTERCAMBIOS ENTRE VALORES DE LA SOLUCION
 	public static void intercambiar(LinkedList<Integer> temp) {
 		//System.out.println(temp.toString());
 		Random rnd = new Random();
