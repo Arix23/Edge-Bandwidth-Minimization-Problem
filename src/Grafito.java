@@ -70,9 +70,15 @@ public class Grafito {
 		//SE CREA POBLACION INICIAL
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
+		
+		//optimizable usando un for que una ambas
+		HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
+		terceraPoblacion.putAll(poblacionInicial);
+		terceraPoblacion.putAll(segundaPoblacion);
 
 		int iter = 0;
 		int x = 5; //Variable futura de Ari
+
 		while (iter < 10 || x > 0) {
 			for (Solucion value : poblacionInicial.values()) {
 				LinkedList<Integer> temp = new LinkedList<Integer>();
@@ -88,7 +94,16 @@ public class Grafito {
 					}
 					segundaPoblacion.put(temp.toString(), new Solucion(temp,calculateBandwidth(aristasProblema)));
 				}
-			}	
+			}
+			
+			
+			int min = poblacionInicial.get(1).getBandwidth();
+
+			for(int i = 1; i <= terceraPoblacion.size(); i++){
+				if(poblacionInicial.get(i).getBandwidth() <= min ){
+					min = poblacionInicial.get(i).getBandwidth();
+				} 
+			}
 
 			iter++;
 			x--;
