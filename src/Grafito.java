@@ -45,7 +45,11 @@ public class Grafito {
 			Vertex finalVertex = Graph.get(value.GetVertex());
 		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
 		    	if(finalVertex.getConnections().get(i).getTag()!=value.GetInicial()) {
-		    		value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(value.GetVertex(),finalVertex.getConnections().get(i).getTag())));
+		    		if(aristasProblema.get(new ConjuntoNodo(value.GetVertex(),finalVertex.getConnections().get(i).getTag())) != null){
+		    			value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(value.GetVertex(),finalVertex.getConnections().get(i).getTag())));
+		    		} else {
+		    			value.addAristaIncidente(aristasProblema.get(new ConjuntoNodo(finalVertex.getConnections().get(i).getTag(),value.GetVertex())));
+		    		}
 		    	}
 		    }
 
