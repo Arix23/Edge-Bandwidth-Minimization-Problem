@@ -148,12 +148,6 @@ public class Grafito {
 			}
 		}
 		
-		for (Solucion value : segundaPoblacion.values()) {
-			if(value.getBandwidth()<minimo) {
-				solucionBuena=value;
-			}
-		}
-		
 		//SE IMPRIME A PANTALLA LA SOLUCION ENCONTRADA CON LAS ARISTAS Y SUS VALORES DADOS
 		
 		System.out.println("La solucion encontrada tiene una bandwidth de: " + solucionBuena.getBandwidth());
