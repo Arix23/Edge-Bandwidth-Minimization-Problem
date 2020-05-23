@@ -111,15 +111,19 @@ public class Grafito {
 				}
 			}
 			
-			for(int i = 1; i <= terceraPoblacion.size(); i++){
+			/*for(int i = 1; i <= terceraPoblacion.size(); i++){
 				minimoArray[i-1] = poblacionInicial.get(i).getBandwidth();
+			}*/
+			int j = 0;
+			for(Solucion value: poblacionInicial.values()){
+				minimoArray[j] = value.getBandwidth();
 			}
 
 			poblacionInicial.clear();
 
 			Arrays.sort(minimoArray, Collections.reverseOrder());
 
-			int mitad = (int) Math.ceil((terceraPoblacion.size())/2);
+			int mitad = (int) Math.floor((terceraPoblacion.size())/2);
 			int i = 1;
 
 			while(mitad>0){
@@ -130,7 +134,8 @@ public class Grafito {
 				}
 			}
 
-			poblacionInicial = terceraPoblacion;
+			//poblacionInicial = terceraPoblacion;
+			poblacionInicial.putAll(terceraPoblacion);
 
 			iter++;
 			x--;
