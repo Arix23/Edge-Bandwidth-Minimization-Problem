@@ -9,7 +9,7 @@ public class Grafito {
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
 		
 		
-		//CÓDIGO PARA LA ENTRADA
+		//Cï¿½DIGO PARA LA ENTRADA
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
@@ -119,25 +119,26 @@ public class Grafito {
 				minimoArray[i-1] = poblacionInicial.get(i).getBandwidth();
 			}
 
-			Arrays.sort(minimoArray);
+			Arrays.sort(minimoArray,Collections.reverseOrder());
 
 			int mitad = (int) Math.ceil((terceraPoblacion.size())/2);
 			int i = 1;
 
-			/*while(mitad>0){
+			while(mitad>0){
 				if(terceraPoblacion.get(i).getBandwidth() == minimoArray[i-1]){
-					poblacionInicial.put(terceraPoblacion.get(i));
+					terceraPoblacion.remove(i);
 					mitad --;
 					i++;
 				}
-				
-			}*/
+			}
+
+			poblacionInicial = terceraPoblacion;
 
 			iter++;
 			x--;
 		}
 		
-		//SE OBTIENE LA MEJOR SOLUCIÓN POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
+		//SE OBTIENE LA MEJOR SOLUCIï¿½N POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
 		
 		int minimo = 1000000;
 		Solucion solucionBuena = new Solucion();
