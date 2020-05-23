@@ -79,7 +79,7 @@ public class Grafito {
 				if(value.getBandwidth()>value.minBandwidth) {
 					temp = value.getSolucion();
 					//INTERCAMBIAR UN VALOR RANDOM
-					intercambiar(temp);
+					Mutacion(temp);
 					value.setSolucion(temp);
 					int count = 0;
 					for (Arista arista : aristasProblema.values()) {
@@ -178,7 +178,7 @@ public class Grafito {
 
 	}
 	
-	public static void intercambiar(LinkedList<Integer> temp) {
+	public static void Mutacion(LinkedList<Integer> temp) {
 		//System.out.println(temp.toString());
 		Random rnd = new Random();
 		int random1 = rnd.nextInt(temp.size());
