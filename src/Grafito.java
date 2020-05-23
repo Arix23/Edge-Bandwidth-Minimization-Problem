@@ -80,10 +80,6 @@ public class Grafito {
 		//SE CREA POBLACION INICIAL Y LA POBLACION EN LA QUE SE REALIZA LAS MUTACIONES
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
-		
-		
-
-		int[] minimoArray = new int[terceraPoblacion.size()];
 
 		int iter = 0;
 		int x = 10; //Variable futura de Ari
@@ -96,6 +92,8 @@ public class Grafito {
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 			terceraPoblacion.putAll(poblacionInicial);
 			terceraPoblacion.putAll(segundaPoblacion);
+
+			Integer[] minimoArray = new Integer[terceraPoblacion.size()];
 
 			for (Solucion value : poblacionInicial.values()) {
 				LinkedList<Integer> temp = new LinkedList<Integer>();
@@ -119,7 +117,7 @@ public class Grafito {
 				minimoArray[i-1] = poblacionInicial.get(i).getBandwidth();
 			}
 
-			Arrays.sort(minimoArray,Collections.reverseOrder());
+			Arrays.sort(minimoArray, Collections.reverseOrder());
 
 			int mitad = (int) Math.ceil((terceraPoblacion.size())/2);
 			int i = 1;
