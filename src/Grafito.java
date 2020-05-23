@@ -71,15 +71,19 @@ public class Grafito {
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
 		
-		//optimizable usando un for que una ambas
-		HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
-		terceraPoblacion.putAll(poblacionInicial);
-		terceraPoblacion.putAll(segundaPoblacion);
+		
+
+		int[] minimoArray = new int[terceraPoblacion.size()];
 
 		int iter = 0;
-		int x = 5; //Variable futura de Ari
+		int x = 10; //Variable futura de Ari
 
 		while (iter < 10 || x > 0) {
+			//optimizable usando un for que una ambas
+			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
+			terceraPoblacion.putAll(poblacionInicial);
+			terceraPoblacion.putAll(segundaPoblacion);
+
 			for (Solucion value : poblacionInicial.values()) {
 				LinkedList<Integer> temp = new LinkedList<Integer>();
 				if(value.getBandwidth()>value.minBandwidth) {
@@ -96,14 +100,25 @@ public class Grafito {
 				}
 			}
 			
-			
-			int min = poblacionInicial.get(1).getBandwidth();
+			poblacionInicial.clear();
 
 			for(int i = 1; i <= terceraPoblacion.size(); i++){
-				if(poblacionInicial.get(i).getBandwidth() <= min ){
-					min = poblacionInicial.get(i).getBandwidth();
-				} 
+				minimoArray[i-1] = poblacionInicial.get(i).getBandwidth();
 			}
+
+			Arrays.sort(minimoArray);
+
+			int mitad = (int) Math.ceil((terceraPoblacion.size())/2);
+			int i = 1;
+
+			/*while(mitad>0){
+				if(terceraPoblacion.get(i).getBandwidth() == minimoArray[i-1]){
+					poblacionInicial.put(terceraPoblacion.get(i));
+					mitad --;
+					i++;
+				}
+				
+			}*/
 
 			iter++;
 			x--;
