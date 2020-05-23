@@ -100,7 +100,7 @@ public class Grafito {
 				if(value.getBandwidth()>value.minBandwidth) {
 					temp = value.getSolucion();
 					//INTERCAMBIAR UN VALOR RANDOM
-					Mutacion(temp);
+					intercambiar(temp);
 					value.setSolucion(temp);
 					int count = 0;
 					for (Arista arista : aristasProblema.values()) {
