@@ -1,4 +1,4 @@
-Hecho por:
+﻿Hecho por:
 Ari Valenzuela
 Nataly Hernández
 Héctor Álvarez
@@ -33,7 +33,7 @@ Donde se muestra un grafo de tres vértices, en el cual todos los nodos están i
 Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carpeta que el algoritmo
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
-Una vez compilado, solo se debe escribir "java Grafito < testcase.txt" en consola para ejecutarlo. 
+Una vez compilado, solo se debe escribir "java Grafito < instancia.txt" en consola para ejecutarlo. 
 
 
 
