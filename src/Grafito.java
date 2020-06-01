@@ -99,10 +99,10 @@ public class Grafito {
 				int secondParent = -1;
 				Random random = new Random();
 				for(int i =0;i<2;i++) {
-					int firstCompetitor = random.nextInt(tamanoPoblacion);
-					int secondCompetitor = random.nextInt(tamanoPoblacion);
+					int firstCompetitor = random.nextInt(poblacionInicial.size());
+					int secondCompetitor = random.nextInt(poblacionInicial.size());
 					while(secondCompetitor==firstCompetitor) {
-						secondCompetitor = random.nextInt(tamanoPoblacion);
+						secondCompetitor = random.nextInt(poblacionInicial.size());
 					}
 					Solucion primerCompetidor = poblacionInicial.get(llaves[firstCompetitor].toString());
 					Solucion segundoCompetidor = poblacionInicial.get(llaves[secondCompetitor].toString());
@@ -243,10 +243,11 @@ public class Grafito {
 			}
 
 		}
-		llaves = new LinkedList[tamanoPoblacion];
+		llaves = new LinkedList[poblacion.size()];
 		int count = 0;
 		for (Solucion value : poblacion.values()) {
 			llaves[count] = value.getSolucion();
+			count++;
 		}
 		return poblacion;
 	}
