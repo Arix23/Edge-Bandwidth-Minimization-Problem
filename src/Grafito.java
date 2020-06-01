@@ -95,7 +95,6 @@ public class Grafito {
 			
 			//RECOMBINAR
 			while(segundaPoblacion.size()<poblacionInicial.size()) {
-				System.out.println("# iter" + iter);
 				int firstParent = -1;
 				int secondParent = -1;
 				Random random = new Random();
