@@ -184,12 +184,26 @@ public class Grafito {
 				
 			}
 			
+			/////////////////////////////Selección de los mejores resultados//////////////////////
+			int randoms;
+			if(tamanoPoblacion < 10){
+				randoms = 1;
+			}else{
+				randoms = (int) Math.ceil((listaSoluciones.size())/10);
+			}
 			
-			int mitad = (int) Math.ceil((listaSoluciones.size())/2);
+			int mitad = (int) Math.ceil((listaSoluciones.size())/2) - randoms;
+			
 			Collections.sort(listaSoluciones);
 			for(int i=0;i<=mitad;i++) {
 				terceraPoblacion.put(listaSoluciones.get(i).getSolucion().toString(), listaSoluciones.get(i));
 			}
+
+			/*
+			for(int i=0;i<randoms;i++){
+				String prueba = RandomTag(listaSoluciones.get(mitad+i+1).getSolucion()).toString();
+				terceraPoblacion.put(prueba,listaSoluciones.get(mitad+i+1));
+			}*/
 
 			poblacionInicial = terceraPoblacion;
 			llaves = new LinkedList[poblacionInicial.size()];
@@ -198,6 +212,7 @@ public class Grafito {
 				llaves[count] = value.getSolucion();
 				count++;
 			}
+
 			iter++;
 			x--;
 		}
