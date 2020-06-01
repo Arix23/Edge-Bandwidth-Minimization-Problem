@@ -90,15 +90,21 @@ public class Grafito {
 		while (iter < numGeneraciones || x > 0) {
 			//optimizable usando un for que una ambas
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
-
+			
 			listaSoluciones = new LinkedList<Solucion>();
 			while(segundaPoblacion.size()!=poblacionInicial.size()) {
+				int firstParent = -1;
+				int secondParent = -1;
 				Random random = new Random();
-				int firstCompetitor = random.nextInt(tamanoPoblacion);
-				int secondCompetitor = random.nextInt(tamanoPoblacion);
-				while(secondCompetitor==firstCompetitor) {
-					secondCompetitor = random.nextInt(tamanoPoblacion);
-				}
+				for(int i =0;i<2;i++) {
+					int firstCompetitor = random.nextInt(tamanoPoblacion);
+					int secondCompetitor = random.nextInt(tamanoPoblacion);
+					while(secondCompetitor==firstCompetitor) {
+						secondCompetitor = random.nextInt(tamanoPoblacion);
+					}
+					
+				}				
+				
 			}
 			
 			for (Solucion value : poblacionInicial.values()) {
