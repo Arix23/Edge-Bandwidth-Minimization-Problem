@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Grafito {
 	public static int tamanoPoblacion;
+	public static LinkedList<Integer>[] llaves;
 	public static void main(String[] args) {
 		//PRIMERO CREAR VERTICES
 		//DESPUES METER LAS CONEXIONES
 		//LUEGO CREAR HASHTABLE DE VERTICES
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
-
 
 		//CODIGO PARA LA ENTRADA
 		Scanner sc = new Scanner(System.in);
@@ -73,20 +73,13 @@ public class Grafito {
 
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
-		
-		//prueba de PMX
-		LinkedList<Integer> prueba1 = new LinkedList();
-		LinkedList<Integer> prueba2 = new LinkedList();
-		for(int i = 0; i < 10; i++) {
-			prueba1.add(i);
-			prueba2.add(10-i);
-		}
-		PMX(prueba1, prueba2);
 
 		//SE CREA POBLACION INICIAL Y LA POBLACION EN LA QUE SE REALIZA LAS MUTACIONES
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
-
+		
+		
+		
 		int iter = 0;
 		int x = 5; //Variable futura de Ari
 
@@ -99,7 +92,9 @@ public class Grafito {
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 
 			listaSoluciones = new LinkedList<Solucion>();
-			
+			while(segundaPoblacion.size()!=poblacionInicial.size()) {
+				Random random = new Random();
+			}
 			
 			for (Solucion value : poblacionInicial.values()) {
 				listaSoluciones.add(value);
@@ -237,7 +232,7 @@ public class Grafito {
 
 	
 	//PMX /////////////////////////////////////////////////////
-	public static void PMX(LinkedList<Integer> temp1, LinkedList<Integer> temp2) {
+	public static LinkedList<LinkedList<Integer>> PMX(LinkedList<Integer> temp1, LinkedList<Integer> temp2) {
 		LinkedList<Integer> parent1 = temp1;
 		LinkedList<Integer> parent2 = temp2;
 					
@@ -300,8 +295,11 @@ public class Grafito {
             }
         }
 		
-        System.out.println("Parents: \n" + parent1.toString() + "   " + parent2.toString());
-        System.out.println("Offprings: \n" + offspring1.toString() + "\n" + offspring2.toString());
+        LinkedList<LinkedList<Integer>> offsprings = new LinkedList<LinkedList<Integer>>();
+        offsprings.add(offspring1);
+        offsprings.add(offspring2);
+        return offsprings;
+        
 		
 	}
 	
