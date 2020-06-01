@@ -94,7 +94,7 @@ public class Grafito {
 			listaSoluciones = new LinkedList<Solucion>();
 			
 			//RECOMBINAR
-			while(segundaPoblacion.size()!=poblacionInicial.size()) {
+			while(segundaPoblacion.size()<poblacionInicial.size()) {
 				System.out.println("# iter" + iter);
 				int firstParent = -1;
 				int secondParent = -1;
@@ -105,14 +105,8 @@ public class Grafito {
 					while(secondCompetitor==firstCompetitor) {
 						secondCompetitor = random.nextInt(poblacionInicial.size());
 					}
-					System.out.println(firstCompetitor);
-					System.out.println(secondCompetitor);
 					Solucion primerCompetidor = poblacionInicial.get(llaves[firstCompetitor].toString());
-					System.out.println(llaves[firstCompetitor].toString());
-					System.out.println(primerCompetidor.toString());
 					Solucion segundoCompetidor = poblacionInicial.get(llaves[secondCompetitor].toString());
-					System.out.println(llaves[secondCompetitor].toString());
-					System.out.println(segundoCompetidor.toString());
 					if(primerCompetidor.getBandwidth()<=segundoCompetidor.getBandwidth()) {
 						if(i==0) {
 							firstParent = firstCompetitor;
@@ -203,6 +197,7 @@ public class Grafito {
 			int count = 0;
 			for (Solucion value : poblacionInicial.values()) {
 				llaves[count] = value.getSolucion();
+				count++;
 			}
 			iter++;
 			x--;
