@@ -39,7 +39,7 @@ public class Grafito {
 
 		tamanoPoblacion = sc.nextInt();
 		int numGeneraciones = sc.nextInt(); 
-		int probMutar = sc.nextInt();
+		double probMutar = sc.nextInt();
 
 		sc.close();
 
@@ -92,6 +92,8 @@ public class Grafito {
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 			
 			listaSoluciones = new LinkedList<Solucion>();
+			
+			//RECOMBINAR
 			while(segundaPoblacion.size()!=poblacionInicial.size()) {
 				int firstParent = -1;
 				int secondParent = -1;
@@ -122,6 +124,29 @@ public class Grafito {
 				if(firstParent==secondParent) {
 					continue;
 				} else {
+					LinkedList<Integer> primerPadre = llaves[firstParent];
+					LinkedList<Integer> segundoPadre = llaves[secondParent];
+					LinkedList<Integer>[] hijos = PMX(primerPadre, segundoPadre);
+					LinkedList<Integer> temp = hijos[0];
+					int count = 0;
+					for (Arista arista : aristasProblema.values()) {
+						arista.setValor(temp.get(count));
+						count++;
+					}
+					Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
+					segundaPoblacion.put(temp.toString(), nuevaSolucion);
+					listaSoluciones.add(nuevaSolucion);
+					
+					
+				    temp = hijos[1];
+					count = 0;
+					for (Arista arista : aristasProblema.values()) {
+						arista.setValor(temp.get(count));
+						count++;
+					}
+					nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
+					segundaPoblacion.put(temp.toString(), nuevaSolucion);
+					listaSoluciones.add(nuevaSolucion);
 					
 				}
 				
@@ -154,6 +179,8 @@ public class Grafito {
 					listaSoluciones.add(nuevaSolucion);					
 				}	
 			}
+			
+			
 			int mitad = (int) Math.ceil((listaSoluciones.size())/2);
 			Collections.sort(listaSoluciones);
 			for(int i=0;i<=mitad;i++) {
@@ -170,7 +197,7 @@ public class Grafito {
 			x--;
 		}
 
-		//SE OBTIENE LA MEJOR SOLUCI�N POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
+		//SE OBTIENE LA MEJOR SOLUCION POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
 
 		int minimo = 1000000;
 		Solucion solucionBuena = new Solucion();
@@ -282,7 +309,7 @@ public class Grafito {
 
 	
 	//PMX /////////////////////////////////////////////////////
-	public static LinkedList<LinkedList<Integer>> PMX(LinkedList<Integer> temp1, LinkedList<Integer> temp2) {
+	public static LinkedList<Integer>[] PMX(LinkedList<Integer> temp1, LinkedList<Integer> temp2) {
 		LinkedList<Integer> parent1 = temp1;
 		LinkedList<Integer> parent2 = temp2;
 					
@@ -345,9 +372,9 @@ public class Grafito {
             }
         }
 		
-        LinkedList<LinkedList<Integer>> offsprings = new LinkedList<LinkedList<Integer>>();
-        offsprings.add(offspring1);
-        offsprings.add(offspring2);
+        LinkedList<Integer>[] offsprings = new LinkedList[2];
+        offsprings[0] = offspring1;
+        offsprings[1] = offspring2;
         return offsprings;
         
 		
