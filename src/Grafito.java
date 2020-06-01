@@ -151,23 +151,16 @@ public class Grafito {
 				}
 				
 				//MUTACION DE SEGUNDA POBLACION
-				for(Solucion value : segundaPoblacion.values()) {					
+				for(Solucion value : segundaPoblacion.values()) {	
+					LinkedList<Integer> temp = value.getSolucion();
 					for(int i = 0; i < value.getSolucion().size(); i++) {
+						temp = value.getSolucion();
 						double probIntercambio = Math.random();
 						if(probIntercambio <= probMutar) {
-							mutar(value.getSolucion(), i);
+							
+							mutar(temp, i);
 						}
 					}
-				}			
-			}
-			
-			for (Solucion value : poblacionInicial.values()) {
-				listaSoluciones.add(value);
-				LinkedList<Integer> temp = new LinkedList<Integer>();
-				if(value.getBandwidth()>value.minBandwidth) {
-					temp = value.getSolucion();
-					//mutar UN VALOR RANDOM
-					mutar(temp);
 					value.setSolucion(temp);
 					int count = 0;
 					for (Arista arista : aristasProblema.values()) {
@@ -176,8 +169,13 @@ public class Grafito {
 					}
 					Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
 					segundaPoblacion.put(temp.toString(), nuevaSolucion);
-					listaSoluciones.add(nuevaSolucion);					
-				}	
+					listaSoluciones.add(nuevaSolucion);	
+				}			
+			}
+			
+			for (Solucion value : poblacionInicial.values()) {
+				listaSoluciones.add(value);
+				
 			}
 			
 			
