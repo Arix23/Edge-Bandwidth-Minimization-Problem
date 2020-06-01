@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Grafito {
-	
+	public static int tamanoPoblacion;
 	public static void main(String[] args) {
 		//PRIMERO CREAR VERTICES
 		//DESPUES METER LAS CONEXIONES
@@ -37,7 +37,9 @@ public class Grafito {
 			}
 		}
 
+		tamanoPoblacion = sc.nextInt();
 		int numGeneraciones = sc.nextInt(); 
+		int probMutar = sc.nextInt();
 
 		sc.close();
 
@@ -149,7 +151,7 @@ public class Grafito {
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
-		for(int i = 0;i<10;i++) {
+		for(int i = 0;i<tamanoPoblacion;i++) {
 			LinkedList<Integer> temp = RandomTag(inicial);
 			int count = 0;
 			for (Arista value : aristas.values()) {
