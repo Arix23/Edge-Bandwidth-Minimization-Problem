@@ -150,31 +150,34 @@ public class Grafito {
 					
 				}
 				
-				//MUTACION DE SEGUNDA POBLACION
-				Solucion[] soluciones = (Solucion[]) segundaPoblacion.values().toArray();
-				segundaPoblacion.clear();
-				for(int i = 0; i < soluciones.length; i++) {
-					LinkedList<Integer> temp = soluciones[i].getSolucion();
-					for(int j = 0; j < soluciones[j].getSolucion().size(); j++) {
-						temp = soluciones[j].getSolucion();
-						double probIntercambio = Math.random();
-						if(probIntercambio <= probMutar) {
-							mutar(temp, j);
-						}
+				
+				
+				
+			}
+			
+			//MUTACION DE SEGUNDA POBLACION
+			System.out.println(poblacionInicial.size());
+			Solucion[] soluciones = (Solucion[]) segundaPoblacion.values().toArray(new Solucion[segundaPoblacion.size()]);
+			segundaPoblacion.clear();
+			for(int i = 0; i < soluciones.length; i++) {
+				LinkedList<Integer> temp = soluciones[i].getSolucion();
+				for(int j = 0; j < soluciones[i].getSolucion().size(); j++) {
+					temp = soluciones[i].getSolucion();
+					double probIntercambio = Math.random();
+					if(probIntercambio <= probMutar) {
+						mutar(temp, j);
 					}
-					segundaPoblacion.put(soluciones[i].getSolucion().toString(), soluciones[i]);
-					soluciones[i].setSolucion(temp);
-					int count = 0;
-					for (Arista arista : aristasProblema.values()) {
-						arista.setValor(temp.get(count));
-						count++;
-					}
-					Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
-					segundaPoblacion.put(temp.toString(), nuevaSolucion);
-					listaSoluciones.add(nuevaSolucion);	
 				}
-				
-				
+				segundaPoblacion.put(soluciones[i].getSolucion().toString(), soluciones[i]);
+				soluciones[i].setSolucion(temp);
+				int count = 0;
+				for (Arista arista : aristasProblema.values()) {
+					arista.setValor(temp.get(count));
+					count++;
+				}
+				Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
+				segundaPoblacion.put(temp.toString(), nuevaSolucion);
+				listaSoluciones.add(nuevaSolucion);	
 			}
 			
 			for (Solucion value : poblacionInicial.values()) {
