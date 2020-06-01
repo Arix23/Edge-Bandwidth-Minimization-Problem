@@ -102,8 +102,30 @@ public class Grafito {
 					while(secondCompetitor==firstCompetitor) {
 						secondCompetitor = random.nextInt(tamanoPoblacion);
 					}
+					Solucion primerCompetidor = poblacionInicial.get(llaves[firstCompetitor].toString());
+					Solucion segundoCompetidor = poblacionInicial.get(llaves[secondCompetitor].toString());
+					if(primerCompetidor.getBandwidth()<=segundoCompetidor.getBandwidth()) {
+						if(i==0) {
+							firstParent = firstCompetitor;
+						} else {
+							secondParent = firstCompetitor;
+						}
+					} else {
+						if(i==0) {
+							firstParent = secondCompetitor;
+						} else {
+							secondParent = secondCompetitor;
+						}
+					}
+				}
+				
+				if(firstParent==secondParent) {
+					continue;
+				} else {
 					
-				}				
+				}
+				
+				
 				
 			}
 			
