@@ -95,6 +95,7 @@ public class Grafito {
 			
 			//RECOMBINAR
 			while(segundaPoblacion.size()!=poblacionInicial.size()) {
+				System.out.println("# iter" + iter);
 				int firstParent = -1;
 				int secondParent = -1;
 				Random random = new Random();
@@ -104,8 +105,14 @@ public class Grafito {
 					while(secondCompetitor==firstCompetitor) {
 						secondCompetitor = random.nextInt(poblacionInicial.size());
 					}
+					System.out.println(firstCompetitor);
+					System.out.println(secondCompetitor);
 					Solucion primerCompetidor = poblacionInicial.get(llaves[firstCompetitor].toString());
+					System.out.println(llaves[firstCompetitor].toString());
+					System.out.println(primerCompetidor.toString());
 					Solucion segundoCompetidor = poblacionInicial.get(llaves[secondCompetitor].toString());
+					System.out.println(llaves[secondCompetitor].toString());
+					System.out.println(segundoCompetidor.toString());
 					if(primerCompetidor.getBandwidth()<=segundoCompetidor.getBandwidth()) {
 						if(i==0) {
 							firstParent = firstCompetitor;
@@ -156,7 +163,6 @@ public class Grafito {
 			}
 			
 			//MUTACION DE SEGUNDA POBLACION
-			System.out.println(poblacionInicial.size());
 			Solucion[] soluciones = (Solucion[]) segundaPoblacion.values().toArray(new Solucion[segundaPoblacion.size()]);
 			segundaPoblacion.clear();
 			for(int i = 0; i < soluciones.length; i++) {
@@ -316,8 +322,8 @@ public class Grafito {
 	
 	//PMX /////////////////////////////////////////////////////
 	public static LinkedList<Integer>[] PMX(LinkedList<Integer> temp1, LinkedList<Integer> temp2) {
-		LinkedList<Integer> parent1 = temp1;
-		LinkedList<Integer> parent2 = temp2;
+		LinkedList<Integer> parent1 = (LinkedList<Integer>) temp1.clone();
+		LinkedList<Integer> parent2 = (LinkedList<Integer>) temp2.clone();
 					
 		Random rMin= new Random();
 		Random rMax= new Random();
