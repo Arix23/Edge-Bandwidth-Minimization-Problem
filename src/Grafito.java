@@ -39,7 +39,7 @@ public class Grafito {
 
 		tamanoPoblacion = sc.nextInt();
 		int numGeneraciones = sc.nextInt(); 
-		int probMutar = sc.nextInt();
+		double probMutar = sc.nextInt();
 
 		sc.close();
 
@@ -92,6 +92,8 @@ public class Grafito {
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 			
 			listaSoluciones = new LinkedList<Solucion>();
+			
+			//RECOMBINAR
 			while(segundaPoblacion.size()!=poblacionInicial.size()) {
 				int firstParent = -1;
 				int secondParent = -1;
@@ -188,7 +190,7 @@ public class Grafito {
 			x--;
 		}
 
-		//SE OBTIENE LA MEJOR SOLUCI�N POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
+		//SE OBTIENE LA MEJOR SOLUCION POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
 
 		int minimo = 1000000;
 		Solucion solucionBuena = new Solucion();
