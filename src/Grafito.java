@@ -39,7 +39,7 @@ public class Grafito {
 
 		tamanoPoblacion = sc.nextInt();
 		int numGeneraciones = sc.nextInt(); 
-		double probMutar = sc.nextInt();
+		double probMutar = sc.nextDouble();
 
 		sc.close();
 
