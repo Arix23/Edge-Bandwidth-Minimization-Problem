@@ -125,8 +125,15 @@ public class Grafito {
 					
 				}
 				
-				
-				
+				//MUTACION DE SEGUNDA POBLACION
+				for(Solucion value : segundaPoblacion.values()) {					
+					for(int i = 0; i < value.getSolucion().size(); i++) {
+						double probIntercambio = Math.random();
+						if(probIntercambio <= probMutar) {
+							mutar(value.getSolucion(), i);
+						}
+					}
+				}			
 			}
 			
 			for (Solucion value : poblacionInicial.values()) {
@@ -134,8 +141,8 @@ public class Grafito {
 				LinkedList<Integer> temp = new LinkedList<Integer>();
 				if(value.getBandwidth()>value.minBandwidth) {
 					temp = value.getSolucion();
-					//INTERCAMBIAR UN VALOR RANDOM
-					intercambiar(temp);
+					//mutar UN VALOR RANDOM
+					mutar(temp);
 					value.setSolucion(temp);
 					int count = 0;
 					for (Arista arista : aristasProblema.values()) {
@@ -257,19 +264,19 @@ public class Grafito {
 
 
 	//FUNCION PARA REALIZAR INTERCAMBIOS ENTRE VALORES DE LA SOLUCION
-	public static void intercambiar(LinkedList<Integer> temp) {
+	public static void mutar(LinkedList<Integer> temp, int i) {
 		//System.out.println(temp.toString());
 		Random rnd = new Random();
-		int random1 = rnd.nextInt(temp.size());
+		int index = i;
 		int random2 = rnd.nextInt(temp.size());
 
-		while(random1 == random2) {
+		while(index == random2) {
 			random2 = rnd.nextInt(temp.size());
 		}
 
 		int ran2val = temp.get(random2);
-		temp.set(random2, temp.get(random1));
-		temp.set(random1, ran2val);
+		temp.set(random2, temp.get(index));
+		temp.set(index, ran2val);
 		//System.out.println(temp.toString());
 	}
 
