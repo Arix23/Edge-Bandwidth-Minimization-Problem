@@ -94,6 +94,11 @@ public class Grafito {
 			listaSoluciones = new LinkedList<Solucion>();
 			while(segundaPoblacion.size()!=poblacionInicial.size()) {
 				Random random = new Random();
+				int firstCompetitor = random.nextInt(tamanoPoblacion);
+				int secondCompetitor = random.nextInt(tamanoPoblacion);
+				while(secondCompetitor==firstCompetitor) {
+					secondCompetitor = random.nextInt(tamanoPoblacion);
+				}
 			}
 			
 			for (Solucion value : poblacionInicial.values()) {
@@ -121,6 +126,11 @@ public class Grafito {
 			}
 
 			poblacionInicial = terceraPoblacion;
+			llaves = new LinkedList[poblacionInicial.size()];
+			int count = 0;
+			for (Solucion value : poblacionInicial.values()) {
+				llaves[count] = value.getSolucion();
+			}
 			iter++;
 			x--;
 		}
@@ -172,6 +182,11 @@ public class Grafito {
 
 			}
 
+		}
+		llaves = new LinkedList[tamanoPoblacion];
+		int count = 0;
+		for (Solucion value : poblacion.values()) {
+			llaves[count] = value.getSolucion();
 		}
 		return poblacion;
 	}
