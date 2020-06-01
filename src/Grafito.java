@@ -80,6 +80,15 @@ public class Grafito {
 
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
+		
+		//prueba de PMX
+		LinkedList<Integer> prueba1 = new LinkedList();
+		LinkedList<Integer> prueba2 = new LinkedList();
+		for(int i = 0; i < 10; i++) {
+			prueba1.add(i);
+			prueba2.add(10-i);
+		}
+		PMX(prueba1, prueba2);
 
 		//SE CREA POBLACION INICIAL Y LA POBLACION EN LA QUE SE REALIZA LAS MUTACIONES
 		HashMap<String,Solucion> poblacionInicial = CrearPoblacionInicial(intList, aristasProblema);
@@ -233,6 +242,112 @@ public class Grafito {
 		//System.out.println(temp.toString());
 	}
 
+	
+	//PMX /////////////////////////////////////////////////////
+	public static void PMX(LinkedList<Integer> temp1, LinkedList<Integer> temp2) {
+		LinkedList<Integer> parent1 = temp1;
+		LinkedList<Integer> parent2 = temp2;
+					
+		Random rMin= new Random();
+		Random rMax= new Random();
+		int min, max;
+		min = rMin.nextInt(temp1.size()-2);
+		max = rMax.nextInt(temp1.size()-1);
+		while(max<=min) {
+			max = rMax.nextInt(temp1.size());
+		}
+		
+		//create segments 
+		int capacity_ofSegments = (max - min) + 1;
+		int [] segment1 = new int[capacity_ofSegments];
+        int [] segment2 = new int[capacity_ofSegments];
+        int segment1and2Index = 0;
+        for(int i = 0; i < temp1.size(); i++){
+            if((i >= min) && (i <= max)){
+               int x = parent1.get(i);  int y = parent2.get(i);
+               segment1[segment1and2Index] = x;
+               segment2[segment1and2Index] = y;
+               segment1and2Index++;
+            }
+          }
+        
+        //crossOver
+        LinkedList<Integer> offspring1 = parent1;
+		LinkedList<Integer> offspring2 = parent2;
+		
+		// offspring2 gets segment 1, offspring1 gets segment2 //
+		insert_Segments(offspring1, segment2, min, max);
+		insert_Segments(offspring2, segment1, min, max);
+		
+		for(int i = 0; i < temp1.size(); i++){
+            if((i < min) || (i > max)){
+               offspring1.set(i, parent1.get(i));
+            }
+        }
+        
+        for(int i = 0; i < temp1.size(); i++){
+            if((i < min) || (i > max)){
+                while(check_forDuplicates(offspring1, i)){
+                    sort_Duplicates(offspring1, i, segment1, segment2);
+                }
+            }
+        }
+        
+        for(int i = 0; i < temp2.size(); i++){
+            if((i < min) || (i > max)){
+               offspring2.set(i, parent2.get(i));
+            }
+        }
+        
+        for(int i = 0; i < temp2.size(); i++){
+            if((i < min) || (i > max)){
+                while(check_forDuplicates(offspring2, i)){
+                    sort_Duplicates(offspring2, i, segment1, segment2);
+                }
+            }
+        }
+		
+        System.out.println("Parents: \n" + parent1.toString() + "   " + parent2.toString());
+        System.out.println("Offprings: \n" + offspring1.toString() + "\n" + offspring2.toString());
+		
+	}
+	
+	private static void insert_Segments(LinkedList<Integer> offspring, int[] segment, int min, int max){
+        int segmentIndex = 0;
+        int size = offspring.size();
+		for(int i = 0; i < size; i++){
+           if((i >= min) && (i <= max)){
+               offspring.set(i, segment[segmentIndex]);
+               segmentIndex++;
+           }
+        }
+    }
+	
+	// For an Element given by its i check that it doesn't appear twice //
+	private static boolean check_forDuplicates(LinkedList<Integer> offspring, int indexOfElement){
+       int size = offspring.size();
+		for(int i = 0; i < size; i++){
+            if((offspring.get(i) == offspring.get(indexOfElement)) && (indexOfElement != i) ){
+                return true;
+            }
+        }
+        return false;
+    }
+	
+	// If Element is Duplicated, replace it by using its mapping //
+    private static void sort_Duplicates(LinkedList<Integer> offspring, int indexOfElement, int[] segment1, int[] segment2){
+        for(int i = 0; i < segment1.length; i++){
+            if(segment1[i] == offspring.get(indexOfElement)){
+                offspring.set(indexOfElement, segment2[i]);
+            }
+            else if(segment2[i] == offspring.get(indexOfElement)){
+            	offspring.set(indexOfElement, segment1[i]);
+            }
+        }
+    }
+
+	/////////////////////////////////////////////////////////////////////////
+	
 	public void EBMPAlgorithm() {
 
 	}
