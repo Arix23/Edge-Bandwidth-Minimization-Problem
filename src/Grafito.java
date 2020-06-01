@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Grafito {
-
+	public static int tamanoPoblacion;
 	public static void main(String[] args) {
 		//PRIMERO CREAR VERTICES
 		//DESPUES METER LAS CONEXIONES
@@ -37,6 +37,10 @@ public class Grafito {
 			}
 		}
 
+		tamanoPoblacion = sc.nextInt();
+		int numGeneraciones = sc.nextInt(); 
+		int probMutar = sc.nextInt();
+
 		sc.close();
 
 
@@ -67,17 +71,6 @@ public class Grafito {
 		    }
 		}
 
-
-		//TEST CASE
-
-		/*
-		 4
-		 1 2
-		 2 1 3
-		 2 2 4
-		 1 3
-		 */
-
 		//Valor random de vertices
 		LinkedList<Integer> intList = createList(aristasProblema.size());
 		
@@ -101,7 +94,7 @@ public class Grafito {
 		//CICLO DONDE SE REALIZAN MUTACIONES DE LAS POBLACIONES Y SE ESCOGE LAS MEJORES
 		//ALGORITMO PRINCIPAL METAHEURISTICO
 		LinkedList<Solucion> listaSoluciones = new LinkedList<Solucion>();
-		while (iter < 5 || x > 0) {
+		while (iter < numGeneraciones || x > 0) {
 			//optimizable usando un for que una ambas
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 
@@ -167,7 +160,7 @@ public class Grafito {
 	public static HashMap<String,Solucion> CrearPoblacionInicial(LinkedList<Integer> inicial, HashMap<ConjuntoNodo, Arista> aristas){
 		HashMap<String,Solucion> poblacion = new HashMap<String,Solucion>();
 		int min = 10000000;
-		for(int i = 0;i<10;i++) {
+		for(int i = 0;i<tamanoPoblacion;i++) {
 			LinkedList<Integer> temp = RandomTag(inicial);
 			int count = 0;
 			for (Arista value : aristas.values()) {

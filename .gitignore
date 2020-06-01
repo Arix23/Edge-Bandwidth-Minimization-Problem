@@ -1,1 +1,6 @@
 /bin/
+src/Vertex.class
+src/Arista.class
+src/ConjuntoNodo.class
+src/Grafito.class
+src/Solucion.class
