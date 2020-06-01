@@ -85,7 +85,7 @@ public class Grafito {
 		//CICLO DONDE SE REALIZAN MUTACIONES DE LAS POBLACIONES Y SE ESCOGE LAS MEJORES
 		//ALGORITMO PRINCIPAL METAHEURISTICO
 		LinkedList<Solucion> listaSoluciones = new LinkedList<Solucion>();
-		while (iter != numGeneraciones || x > 0) {
+		while (iter < numGeneraciones || x > 0) {
 			//optimizable usando un for que una ambas
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 
