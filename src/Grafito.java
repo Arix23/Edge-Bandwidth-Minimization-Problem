@@ -163,7 +163,7 @@ public class Grafito {
 				for(int j = 0; j < soluciones[i].getSolucion().size(); j++) {
 					temp = soluciones[i].getSolucion();
 					double probIntercambio = Math.random();
-					if(probIntercambio >= probMutar) {
+					if(probIntercambio <= probMutar) {
 						mutar(temp, j);
 					}
 				}
