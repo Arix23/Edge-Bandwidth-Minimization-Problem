@@ -202,7 +202,7 @@ public class Grafito {
 			
 			for(int i=0;i<randoms;i++){
 				Random r = new Random();
-				int index = r.nextInt(listaSoluciones.size()-mitad+1) +mitad+1;
+				int index = r.nextInt(listaSoluciones.size()-mitad-1) + mitad;
 				terceraPoblacion.put(listaSoluciones.get(index).getSolucion().toString(), listaSoluciones.get(index));
 			}
 
