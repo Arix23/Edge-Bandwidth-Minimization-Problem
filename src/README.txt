@@ -20,11 +20,10 @@ El algoritmo recibe el siguiente formato de entrada, en formatos .txt, desde con
 		-Número de conexiones del nodo.
 		-Nodos a los que está conectado*
 		*(Aunque ya este espcíficada una conexión en un nodo anterior, se deben ingresar TODAS las conexiones.)
-	-El archivo .txt es seguido de 3 números que representan los siguentes valores:
+	-El archivo .txt tiene además 3 números que representan los siguentes valores:
 		-Tamaño de Población 
 		-Número de Generaciones 
 		-Probabilidad de mutar
-		*Los cuales todos son numeros enteros.
 
 Un ejemplo de entrada válida sería el siguiente:
 
@@ -33,16 +32,19 @@ Un archivo .txt que contenga:
 2 2 3
 2 1 3
 2 1 2
+5
+5
+0.5
 
 Donde se muestra un grafo de tres vértices, en el cual todos los nodos están interconectados entre sí.
 
-Seguido por tres números.
+Una población de 5, 5 generaciones y una probablidad de 50% de mutar.
 
 Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carpeta que el algoritmo
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
 Una vez compilado, solo se debe escribir:
- "java Grafito < instancia.txt tamañoPoblación númeroGeneraciones probabilidadMutar" 
+ "java Grafito < instancia.txt" 
 en consola para ejecutarlo. 
 
 
