@@ -20,7 +20,6 @@ El algoritmo recibe el siguiente formato de entrada, en formatos .txt, desde con
 		-Número de conexiones del nodo.
 		-Nodos a los que está conectado*
 		*(Aunque ya este espcíficada una conexión en un nodo anterior, se deben ingresar TODAS las conexiones.)
-	-El archivo .txt es seguido de 3 números que representan los siguentes valores:
 		-Tamaño de Población 
 		-Número de Generaciones 
 		-Probabilidad de mutar
@@ -42,8 +41,7 @@ Para correr los TestCases desde consola es necesario que estos se encuentren en 
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
 Una vez compilado, solo se debe escribir:
- "java Grafito < instancia.txt tamañoPoblación númeroGeneraciones probabilidadMutar" 
-en consola para ejecutarlo. 
+ "java Grafito < instancia.txt"  en consola para ejecutarlo. 
 
 
 
