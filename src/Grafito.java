@@ -199,11 +199,12 @@ public class Grafito {
 				terceraPoblacion.put(listaSoluciones.get(i).getSolucion().toString(), listaSoluciones.get(i));
 			}
 
-			/*
+			
 			for(int i=0;i<randoms;i++){
-				String prueba = RandomTag(listaSoluciones.get(mitad+i+1).getSolucion()).toString();
-				terceraPoblacion.put(prueba,listaSoluciones.get(mitad+i+1));
-			}*/
+				Random r = new Random();
+				int index = r.nextInt(listaSoluciones.size()-mitad+1) +mitad+1;
+				terceraPoblacion.put(listaSoluciones.get(index).getSolucion().toString(), listaSoluciones.get(index));
+			}
 
 			poblacionInicial = terceraPoblacion;
 			llaves = new LinkedList[poblacionInicial.size()];
