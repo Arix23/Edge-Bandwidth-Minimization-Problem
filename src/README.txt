@@ -3,7 +3,7 @@ Ari Valenzuela
 Nataly Hernández
 Héctor Álvarez
 
-Esto es una implementación de un algortimo de solución al Problema de Bandwith Mínimo, 
+Esto es una implementación de un algortimo de solución al Problema de Bandwith Mínimo,
 que consiste en las siguientes clases:
 
 -Grafito, clase principal donde se soluciona el problema.
@@ -20,28 +20,27 @@ El algoritmo recibe el siguiente formato de entrada, en formatos .txt, desde con
 		-Número de conexiones del nodo.
 		-Nodos a los que está conectado*
 		*(Aunque ya este espcíficada una conexión en un nodo anterior, se deben ingresar TODAS las conexiones.)
-		-Tamaño de Población 
-		-Número de Generaciones 
+		-Tamaño de Población
+		-Número de Generaciones
 		-Probabilidad de mutar
-		*Los cuales todos son numeros enteros.
 
 Un ejemplo de entrada válida sería el siguiente:
 
-Un archivo .txt que contenga: 
+Un archivo .txt que contenga:
 3
 2 2 3
 2 1 3
 2 1 2
+5
+5
+0.5
 
 Donde se muestra un grafo de tres vértices, en el cual todos los nodos están interconectados entre sí.
 
-Seguido por tres números.
+Una población de 5, 5 generaciones y una probablidad de 50% de mutar.
 
 Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carpeta que el algoritmo
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
 Una vez compilado, solo se debe escribir:
- "java Grafito < instancia.txt"  en consola para ejecutarlo. 
-
-
-
+ "java Grafito < instancia.txt"  en consola para ejecutarlo.
