@@ -36,7 +36,7 @@ Un archivo .txt que contenga:
 
 Donde se muestra un grafo de tres vértices, en el cual todos los nodos están interconectados entre sí.
 
-Seguido por tre números.
+Seguido por tres números.
 
 Para correr los TestCases desde consola es necesario que estos se encuentren en la misma carpeta que el algoritmo
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
