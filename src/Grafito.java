@@ -184,7 +184,7 @@ public class Grafito {
 				
 			}
 			
-			/////////////////////////////Selección de los mejores resultados//////////////////////
+			/////////////////////////////Seleccion de los mejores resultados//////////////////////
 			int randoms;
 			if(tamanoPoblacion < 10){
 				randoms = 1;
