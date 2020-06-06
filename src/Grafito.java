@@ -8,7 +8,6 @@ public class Grafito {
 		//DESPUES METER LAS CONEXIONES
 		//LUEGO CREAR HASHTABLE DE VERTICES
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
-
 		//CODIGO PARA LA ENTRADA
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
@@ -79,15 +78,16 @@ public class Grafito {
 		HashMap<String,Solucion> segundaPoblacion = new HashMap<String, Solucion>();
 		
 		
-		
 		int iter = 0;
-		int x = 5; //Variable futura de Ari
-
+		
+		
+		
+		
 
 		//CICLO DONDE SE REALIZAN MUTACIONES DE LAS POBLACIONES Y SE ESCOGE LAS MEJORES
 		//ALGORITMO PRINCIPAL METAHEURISTICO
 		LinkedList<Solucion> listaSoluciones = new LinkedList<Solucion>();
-		while (iter < numGeneraciones || x > 0) {
+		while (iter < numGeneraciones) {
 			//optimizable usando un for que una ambas
 			HashMap<String,Solucion> terceraPoblacion = new HashMap<String, Solucion>();
 			
@@ -134,8 +134,7 @@ public class Grafito {
 						count++;
 					}
 					Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
-					segundaPoblacion.put(temp.toString(), nuevaSolucion);
-					listaSoluciones.add(nuevaSolucion);
+					segundaPoblacion.put(nuevaSolucion.getSolucion().toString(), nuevaSolucion);
 					
 					
 				    temp = hijos[1];
@@ -145,8 +144,7 @@ public class Grafito {
 						count++;
 					}
 					nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
-					segundaPoblacion.put(temp.toString(), nuevaSolucion);
-					listaSoluciones.add(nuevaSolucion);
+					segundaPoblacion.put(nuevaSolucion.getSolucion().toString(), nuevaSolucion);
 					
 				}
 				
@@ -161,21 +159,18 @@ public class Grafito {
 			for(int i = 0; i < soluciones.length; i++) {
 				LinkedList<Integer> temp = soluciones[i].getSolucion();
 				for(int j = 0; j < soluciones[i].getSolucion().size(); j++) {
-					temp = soluciones[i].getSolucion();
 					double probIntercambio = Math.random();
 					if(probIntercambio <= probMutar) {
-						mutar(temp, j);
+						temp = mutar(temp, j);
 					}
 				}
-				segundaPoblacion.put(soluciones[i].getSolucion().toString(), soluciones[i]);
-				soluciones[i].setSolucion(temp);
 				int count = 0;
 				for (Arista arista : aristasProblema.values()) {
 					arista.setValor(temp.get(count));
 					count++;
 				}
 				Solucion nuevaSolucion = new Solucion(temp,calculateBandwidth(aristasProblema));
-				segundaPoblacion.put(temp.toString(), nuevaSolucion);
+				segundaPoblacion.put(nuevaSolucion.getSolucion().toString(), nuevaSolucion);
 				listaSoluciones.add(nuevaSolucion);	
 			}
 			
@@ -183,6 +178,7 @@ public class Grafito {
 				listaSoluciones.add(value);
 				
 			}
+			
 			
 			/////////////////////////////Seleccion de los mejores resultados//////////////////////
 			int randoms;
@@ -198,6 +194,7 @@ public class Grafito {
 			for(int i=0;i<=mitad;i++) {
 				terceraPoblacion.put(listaSoluciones.get(i).getSolucion().toString(), listaSoluciones.get(i));
 			}
+			
 
 			
 			for(int i=0;i<randoms;i++){
@@ -205,26 +202,30 @@ public class Grafito {
 				int index = r.nextInt(listaSoluciones.size()-mitad-1) + mitad;
 				terceraPoblacion.put(listaSoluciones.get(index).getSolucion().toString(), listaSoluciones.get(index));
 			}
-
-			poblacionInicial = terceraPoblacion;
+			
+		
+			
+			
+			poblacionInicial = (HashMap<String, Solucion>) terceraPoblacion.clone();
 			llaves = new LinkedList[poblacionInicial.size()];
 			int count = 0;
 			for (Solucion value : poblacionInicial.values()) {
+
 				llaves[count] = value.getSolucion();
 				count++;
 			}
 
 			iter++;
-			x--;
 		}
 
 		//SE OBTIENE LA MEJOR SOLUCION POSIBLE DE LAS POBLACIONES OBTENIDAS DEL CICLO
-
+		
 		int minimo = 1000000;
 		Solucion solucionBuena = new Solucion();
 
 		for (Solucion value : poblacionInicial.values()) {
 			if(value.getBandwidth()<minimo) {
+				minimo = value.getBandwidth();
 				solucionBuena=value;
 			}
 		}
@@ -313,20 +314,22 @@ public class Grafito {
 
 
 	//FUNCION PARA REALIZAR INTERCAMBIOS ENTRE VALORES DE LA SOLUCION
-	public static void mutar(LinkedList<Integer> temp, int i) {
-		//System.out.println(temp.toString());
-		Random rnd = new Random();
-		int index = i;
-		int random2 = rnd.nextInt(temp.size());
+	public static LinkedList<Integer> mutar(LinkedList<Integer> temp, int i) {
+		LinkedList<Integer> mutada = (LinkedList<Integer>) temp.clone();
+        Random rnd = new Random();
+        int index = i;
+        int random2 = rnd.nextInt(temp.size());
 
-		while(index == random2) {
-			random2 = rnd.nextInt(temp.size());
-		}
+        while(index == random2) {
+            random2 = rnd.nextInt(temp.size());
+        }
 
-		int ran2val = temp.get(random2);
-		temp.set(random2, temp.get(index));
-		temp.set(index, ran2val);
-		//System.out.println(temp.toString());
+        int ran2val = temp.get(random2);
+        mutada.set(random2, mutada.get(index));
+        mutada.set(index, ran2val);
+        //System.out.println(temp.toString());
+
+        return mutada;
 	}
 
 	
@@ -398,8 +401,6 @@ public class Grafito {
         offsprings[0] = offspring1;
         offsprings[1] = offspring2;
         return offsprings;
-        
-		
 	}
 	
 	private static void insert_Segments(LinkedList<Integer> offspring, int[] segment, int min, int max){
