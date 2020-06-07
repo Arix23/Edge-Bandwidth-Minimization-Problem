@@ -57,7 +57,6 @@ public class Grafito {
 		    }
 
 
-		    // SE PUEDE OPTIMIZAR
 		    finalVertex = Graph.get(value.GetInicial());
 		    for(int i = 0; i<finalVertex.getConnections().size();i++) {
 		    	if(finalVertex.getConnections().get(i).getTag()!=value.GetVertex()) {
