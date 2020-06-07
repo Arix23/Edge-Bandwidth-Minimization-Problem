@@ -1,0 +1,15 @@
+1- Simple Graph 
+2- Petersen Graph
+3- Grafo Completo de 5
+4- Malla 3x2
+5- Cubo
+6-
+7- Malla 4x4
+8-
+9-
+10-
+11-
+12-
+13-
+14-
+15-
