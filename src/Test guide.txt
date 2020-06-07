@@ -4,7 +4,7 @@
 4- Malla 3x2
 5- Cubo
 6-
-7-
+7- Malla 4x4
 8-
 9-
 10-
