@@ -1,7 +1,11 @@
 import java.util.*;
+import java.lang.IllegalArgumentException;
+import java.lang.NullPointerException;
 
 public class Grafito {
-	public static int tamanoPoblacion;
+	public static int tamanoPoblacion,
+					  numGeneraciones;
+	public static double probMutar;
 	public static LinkedList<Integer>[] llaves;
 	public static void main(String[] args) {
 		//PRIMERO CREAR VERTICES
@@ -10,39 +14,58 @@ public class Grafito {
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
 		//CODIGO PARA LA ENTRADA
 		long startTime = System.nanoTime();
-		Scanner sc = new Scanner(System.in);
-		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
 		HashMap<ConjuntoNodo, Arista> aristasProblema = new HashMap<ConjuntoNodo, Arista>();
 
-		//Se agregan las vertices al grafo y se les asigna una llave
-		for(int i = 1; i <= numVertex; i++){
-			Graph.put(i,new Vertex(i));
-		}
+		try{
+			Scanner sc = new Scanner(System.in);
+			int numVertex = sc.nextInt();
+			
+			validVertextNumber(numVertex);
 
-		for(int i = 1; i <= numVertex; i++){
-			//Se recibe el numero de conexiones, y se agregan a las vertices
-			int numConnections = sc.nextInt();
-
-			for(int j = 1; j <= numConnections; j++){
-				int conVertex = sc.nextInt();
-				Graph.get(i).addConnection(Graph.get(conVertex));
-
-				//SE CREAN LAS ARISTAS; EVITANDO REPETIDOS
-				if(aristasProblema.get(new ConjuntoNodo(i,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,i))==null) {
-					aristasProblema.put(new ConjuntoNodo(i,conVertex), new Arista(0,i,conVertex));
-				} else {
-
+			//Se agregan las vertices al grafo y se les asigna una llave
+			for(int i = 1; i <= numVertex; i++){
+				Graph.put(i,new Vertex(i));
+			}
+	
+			for(int i = 1; i <= numVertex; i++){
+				//Se recibe el numero de conexiones, y se agregan a las vertices
+				int numConnections = sc.nextInt();
+	
+				for(int j = 1; j <= numConnections; j++){
+					int conVertex = sc.nextInt();
+					isPositive(conVertex);
+					Graph.get(i).addConnection(Graph.get(conVertex));
+	
+					//SE CREAN LAS ARISTAS; EVITANDO REPETIDOS
+					if(aristasProblema.get(new ConjuntoNodo(i,conVertex))==null && aristasProblema.get(new ConjuntoNodo(conVertex,i))==null) {
+						aristasProblema.put(new ConjuntoNodo(i,conVertex), new Arista(0,i,conVertex));
+					} else {
+	
+					}
 				}
 			}
+	
+			tamanoPoblacion = sc.nextInt();
+			validPopulationSize(tamanoPoblacion);
+			numGeneraciones = sc.nextInt(); 
+			validGenerationNumber(numGeneraciones);
+			probMutar = sc.nextDouble();
+			validProbability(probMutar);
+	
+			sc.close();
+		}catch(IllegalArgumentException | InputMismatchException | NullPointerException ex){
+			//Se imprime el mensaje de la excepcion
+
+			if(ex.getClass().getSimpleName().equals("NullPointerException"))
+				System.out.println("Datos insuficientes");
+			else if(ex.getMessage() == null)
+				System.out.println("Entrada no aceptada");
+			else
+				System.out.println(ex.getMessage()); 
+
+			System.exit(1);
 		}
-
-		tamanoPoblacion = sc.nextInt();
-		int numGeneraciones = sc.nextInt(); 
-		double probMutar = sc.nextDouble();
-
-		sc.close();
-
 
 		//INCIDENCIA DE ARISTAS
 		for (Arista value : aristasProblema.values()) {
@@ -439,6 +462,33 @@ public class Grafito {
             }
         }
     }
+
+	//Validar que los numeros de objetos sean aceptados
+	public static void validVertextNumber(int a){
+		if(a <= 2)
+			throw new IllegalArgumentException("El numero de vertices debe ser mayor a 2");
+	}
+
+	public static void validPopulationSize(int a){
+		if(a <= 0)
+			throw new IllegalArgumentException("El tamano de la poblacion debe ser mayor a 0");
+	}
+
+	public static void validGenerationNumber(int a){
+		if(a <= 0)
+			throw new IllegalArgumentException("El numero de generaciones debe ser mayor a 0");
+	}
+
+	public static void validProbability(double a){
+		if(a <= 0)
+			throw new IllegalArgumentException("La probabilidad de mutar debe ser positiva");
+	}
+
+	//Validar que sea positivo
+	public static void isPositive(int a){
+		if(a < 0)
+			throw new IllegalArgumentException("Los datos deben ser positivos");
+	}
 
 	/////////////////////////////////////////////////////////////////////////
 	
