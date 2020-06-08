@@ -44,3 +44,6 @@ y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
 Una vez compilado, solo se debe escribir:
  "java Grafito < test01.txt"  en consola para ejecutarlo.
+
+
+Esta carpeta contiene además la carpeta con los tests ordenados siguiendo su formato
