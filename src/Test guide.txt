@@ -1,15 +1,15 @@
 1- Simple Graph 
-2- Malla 3x2
-3- Cubo
-4- Triangular 4
-5- Petersen Graph
-6- Malla 4x4
-7- Cuboctaedro
-8- Grafo de camino, de 25 aristas
-9- Grafo Completo de 5
-10- Grafo de camino, de 50 aristas
-11- Malla 5x5
-12- Malla 6x6
+2- Bipartite 2x3
+3- Triangular 4
+4- Bipartite 2x5
+5.- Bipartite 3x4
+6- Cubo
+7- Petersen Graph
+8- Cuboctaedro
+9- Grafo de camino, de 25 aristas
+10- Grafo Completo de 5
+11- Grafo de camino, de 50 aristas
+12.- Malla 6x6
 13- Grafo Completo de 7
 14- Grafo completo de 9
 15- BIG BOY

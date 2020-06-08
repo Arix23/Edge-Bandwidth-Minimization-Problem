@@ -9,6 +9,7 @@ public class Grafito {
 		//LUEGO CREAR HASHTABLE DE VERTICES
 		//EL ALGORITMO RECIBE LA HASHTABLE DE VERTICES
 		//CODIGO PARA LA ENTRADA
+		long startTime = System.nanoTime();
 		Scanner sc = new Scanner(System.in);
 		int numVertex = sc.nextInt();
 		HashMap<Integer,Vertex> Graph = new HashMap<Integer,Vertex>();
@@ -209,7 +210,6 @@ public class Grafito {
 			llaves = new LinkedList[poblacionInicial.size()];
 			int count = 0;
 			for (Solucion value : poblacionInicial.values()) {
-
 				llaves[count] = value.getSolucion();
 				count++;
 			}
@@ -238,6 +238,10 @@ public class Grafito {
 			System.out.println("Arista " + value.GetInicial() + "-" + value.GetVertex() + " Con valor: " + solucionBuena.getSolucion().get(count));
 			count++;
 		}
+		
+		long endTime = System.nanoTime();
+		long timeElapsed = endTime - startTime;
+		System.out.println("Execution time in milliseconds : " + timeElapsed / 1000000);
 
 
 
