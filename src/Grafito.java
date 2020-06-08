@@ -35,6 +35,7 @@ public class Grafito {
 				for(int j = 1; j <= numConnections; j++){
 					int conVertex = sc.nextInt();
 					isPositive(conVertex);
+					validConnection(numVertex, conVertex, i);
 					Graph.get(i).addConnection(Graph.get(conVertex));
 	
 					//SE CREAN LAS ARISTAS; EVITANDO REPETIDOS
@@ -54,11 +55,13 @@ public class Grafito {
 			validProbability(probMutar);
 	
 			sc.close();
-		}catch(NoSuchElementException | IllegalArgumentException ex){
+		}catch(NoSuchElementException | IllegalArgumentException | NullPointerException ex){
 			//Se imprime el mensaje de la excepcion
 
 			if(ex.getClass().getSimpleName().equals("NoSuchElementException"))
 				System.out.println("Datos insuficientes");
+			else if(ex.getClass().getSimpleName().equals("NullPointerException"))
+				System.out.println("Nodo no existente");
 			else if(ex.getMessage() == null)
 				System.out.println("Entrada no aceptada");
 			else
@@ -489,6 +492,14 @@ public class Grafito {
 		if(a < 0)
 			throw new IllegalArgumentException("Los datos deben ser positivos");
 	}
+
+	public static void validConnection(int a, int b, int i){
+		if(a < b)
+			throw new IllegalArgumentException("Conexion no aceptada, nodo no encontrado");
+		else if(b == i)
+			throw new IllegalArgumentException("Conexion no aceptada, en un grafo simple, un nodo no debe tener conexion consigo mismo");
+	}
+
 
 	/////////////////////////////////////////////////////////////////////////
 	
