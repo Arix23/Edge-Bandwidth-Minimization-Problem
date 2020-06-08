@@ -1,0 +1,7 @@
+La solucion encontrada tiene una bandwidth de: 2
+Se le asigna los siguientes valores a cada arista: 
+Arista 1-3 Con valor: 3
+Arista 1-2 Con valor: 1
+Arista 1-4 Con valor: 2
+Arista 3-4 Con valor: 4
+Execution time in milliseconds : 142

@@ -1,0 +1,39 @@
+La solucion encontrada tiene una bandwidth de: 28
+Se le asigna los siguientes valores a cada arista: 
+Arista 2-3 Con valor: 12
+Arista 4-5 Con valor: 4
+Arista 6-7 Con valor: 13
+Arista 8-9 Con valor: 15
+Arista 1-3 Con valor: 32
+Arista 4-6 Con valor: 2
+Arista 5-7 Con valor: 10
+Arista 1-2 Con valor: 35
+Arista 4-7 Con valor: 9
+Arista 5-6 Con valor: 7
+Arista 1-5 Con valor: 14
+Arista 2-6 Con valor: 8
+Arista 3-7 Con valor: 17
+Arista 1-4 Con valor: 29
+Arista 2-7 Con valor: 11
+Arista 3-6 Con valor: 5
+Arista 1-7 Con valor: 18
+Arista 2-4 Con valor: 16
+Arista 3-5 Con valor: 6
+Arista 1-6 Con valor: 27
+Arista 2-5 Con valor: 31
+Arista 3-4 Con valor: 22
+Arista 1-9 Con valor: 20
+Arista 1-8 Con valor: 30
+Arista 2-8 Con valor: 36
+Arista 3-9 Con valor: 21
+Arista 2-9 Con valor: 24
+Arista 3-8 Con valor: 33
+Arista 4-8 Con valor: 25
+Arista 5-9 Con valor: 28
+Arista 4-9 Con valor: 1
+Arista 5-8 Con valor: 26
+Arista 6-8 Con valor: 23
+Arista 7-9 Con valor: 19
+Arista 6-9 Con valor: 3
+Arista 7-8 Con valor: 34
+Execution time in milliseconds : 20001

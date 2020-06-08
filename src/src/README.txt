@@ -43,4 +43,4 @@ Para correr los TestCases desde consola es necesario que estos se encuentren en 
 y que se este se haya compilado previamente, utilizando "javac Grafito.java".
 
 Una vez compilado, solo se debe escribir:
- "java Grafito < instancia.txt"  en consola para ejecutarlo.
+ "java Grafito < test01.txt"  en consola para ejecutarlo.
