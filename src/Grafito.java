@@ -55,13 +55,11 @@ public class Grafito {
 			validProbability(probMutar);
 	
 			sc.close();
-		}catch(NoSuchElementException | IllegalArgumentException | NullPointerException ex){
+		}catch(NoSuchElementException | IllegalArgumentException ex){
 			//Se imprime el mensaje de la excepcion
 
 			if(ex.getClass().getSimpleName().equals("NoSuchElementException"))
 				System.out.println("Datos insuficientes");
-			else if(ex.getClass().getSimpleName().equals("NullPointerException"))
-				System.out.println("Nodo no existente");
 			else if(ex.getMessage() == null)
 				System.out.println("Entrada no aceptada");
 			else
