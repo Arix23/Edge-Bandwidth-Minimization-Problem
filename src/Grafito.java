@@ -54,10 +54,10 @@ public class Grafito {
 			validProbability(probMutar);
 	
 			sc.close();
-		}catch(IllegalArgumentException | InputMismatchException | NullPointerException ex){
+		}catch(NoSuchElementException | IllegalArgumentException ex){
 			//Se imprime el mensaje de la excepcion
 
-			if(ex.getClass().getSimpleName().equals("NullPointerException"))
+			if(ex.getClass().getSimpleName().equals("NoSuchElementException"))
 				System.out.println("Datos insuficientes");
 			else if(ex.getMessage() == null)
 				System.out.println("Entrada no aceptada");
